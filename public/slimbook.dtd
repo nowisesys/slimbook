@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+    PUBLIC ID: -//BMC Computing Department//SlimBook Book//EN
+    SYSTEM ID: http://it.bmc.uu.se/schema/slimbook/book.dtd
+
+-->
+
+<!--
+    An example how to use this DTD from your XML document:
+
+    <?xml version="1.0"?>
+    <!DOCTYPE ns1:book SYSTEM "slimbook.dtd">
+    <ns1:book>
+    ...
+    </ns1:book>
+
+    <?xml version="1.0"?>
+    <!DOCTYPE ns1:page SYSTEM "slimbook.dtd">
+    <ns1:page>
+    ...
+    </ns1:page>
+
+-->
+
+<!--- 
+    This element defines a book containing zero or more chapters. Suitable for 
+    type setting a book or creating a set of related web pages. 
+    -->
+<!ELEMENT ns1:book (ns1:info|ns1:chapter)*>
+<!ATTLIST ns1:book
+    xmlns:ns1 CDATA #IMPLIED
+    xsi:schemaLocation CDATA #IMPLIED
+    xmlns:xsi CDATA #IMPLIED
+  >
+
+<!--- 
+    This element defines a single page containing zero or more paragraphs. 
+    Suitable for a single web page. 
+    -->
+<!ELEMENT ns1:page (ns1:info|ns1:chapter)*>
+<!ATTLIST ns1:page
+    xmlns:ns1 CDATA #IMPLIED
+    xsi:schemaLocation CDATA #IMPLIED
+    xmlns:xsi CDATA #IMPLIED
+  >
+
+<!--- Defines the book or page information. -->
+<!ELEMENT ns1:info (ns1:title|ns1:author|ns1:version|ns1:date)*>
+
+<!--- The book or page title. Also tooltip for video, image or link elements. -->
+<!ELEMENT ns1:title EMPTY>
+
+<!--- The publish date. -->
+<!ELEMENT ns1:date (#PCDATA)>
+
+<!--- The document version. -->
+<!ELEMENT ns1:version EMPTY>
+
+<!--- Defines the author information. -->
+<!ELEMENT ns1:author (ns1:email|ns1:name)*>
+
+<!--- The author full name. -->
+<!ELEMENT ns1:name EMPTY>
+
+<!--- The author email address. -->
+<!ELEMENT ns1:email EMPTY>
+
+<!--- Defines a single chapter. -->
+<!ELEMENT ns1:chapter (ns1:paragraph)*>
+<!ATTLIST ns1:chapter
+    title CDATA #IMPLIED
+    name CDATA #IMPLIED
+  >
+
+<!--- A paragraph within a chapter, optionally containing media like video or image. -->
+<!ELEMENT ns1:paragraph (ns1:video|ns1:image|ns1:link)*>
+<!ATTLIST ns1:paragraph
+    title CDATA #IMPLIED
+    name CDATA #IMPLIED
+  >
+
+<!--- Display a video or a preview in the target document. -->
+<!ELEMENT ns1:video EMPTY>
+<!ATTLIST ns1:video
+    source CDATA #IMPLIED
+    title CDATA #IMPLIED
+  >
+
+<!--- Display a image in the target document. -->
+<!ELEMENT ns1:image EMPTY>
+<!ATTLIST ns1:image
+    source CDATA #IMPLIED
+    title CDATA #IMPLIED
+  >
+
+<!--- Defines a link to another location (extern URL or referenced element). -->
+<!ELEMENT ns1:link EMPTY>
+<!ATTLIST ns1:link
+    target CDATA #IMPLIED
+    title CDATA #IMPLIED
+  >

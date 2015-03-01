@@ -1,0 +1,251 @@
+<?xml version="1.0"?>
+
+<!--
+    Simple XML schema for web page markup and type setting of books.
+        
+    Author: Anders Lövgren
+    Date:   2015-02-28
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://it.bmc.uu.se/compdept/slimbook"
+           xmlns="http://it.bmc.uu.se/compdept/slimbook"
+           elementFormDefault="qualified">
+
+    <xs:annotation>
+        <xs:appinfo>SlimBook XML Schema</xs:appinfo>
+        <xs:documentation>
+            Simple XML schema for web page markup and type setting of books.
+        </xs:documentation>
+    </xs:annotation>
+    
+    <xs:element name="book">
+        <xs:annotation>
+            <xs:appinfo>Book</xs:appinfo>
+            <xs:documentation>
+                This element defines a book containing zero or more chapters. Suitable for type setting a book or creating a set of related web pages.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="info" type="info" maxOccurs="1" />
+                <xs:element name="chapter" type="chapter" maxOccurs="unbounded" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="page">
+        <xs:annotation>
+            <xs:appinfo>Page</xs:appinfo>
+            <xs:documentation>
+                This element defines a single page containing zero or more paragraphs. Suitable for a single web page.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="info" type="info" maxOccurs="1" />
+                <xs:element name="chapter" type="chapter" maxOccurs="1" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="author">
+        <xs:annotation>
+            <xs:appinfo>Author</xs:appinfo>
+            <xs:documentation>
+                Defines the author information.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:appinfo>Fullname</xs:appinfo>
+                    <xs:documentation>
+                        The author full name.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="email" type="xs:string" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:appinfo>Email</xs:appinfo>
+                    <xs:documentation>
+                        The author email address.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="info">
+        <xs:annotation>
+            <xs:appinfo>Information</xs:appinfo>
+            <xs:documentation>
+                Defines the book or page information.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="title" type="xs:string" minOccurs="1" maxOccurs="1" >
+                <xs:annotation>
+                    <xs:appinfo>Book/Page Title</xs:appinfo>
+                    <xs:documentation>
+                        The book or page title.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="date" type="xs:date" minOccurs="0" maxOccurs="1" default="1970-01-01">
+                <xs:annotation>
+                    <xs:appinfo>Publish Date</xs:appinfo>
+                    <xs:documentation>
+                        The publish date.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="version" type="xs:string" minOccurs="0" maxOccurs="1" >
+                <xs:annotation>
+                    <xs:appinfo>Version</xs:appinfo>
+                    <xs:documentation>
+                        The document version.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="author" type="author" minOccurs="1" maxOccurs="1" />
+        </xs:sequence>
+    </xs:complexType>                
+     
+    <xs:complexType name="chapter">
+        <xs:annotation>
+            <xs:appinfo>Chapter</xs:appinfo>
+            <xs:documentation>
+                Defines a single chapter.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="paragraph" type="paragraph" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attribute name="title" type="xs:string">
+            <xs:annotation>
+                <xs:appinfo>Chapter Title</xs:appinfo>
+                <xs:documentation>
+                    The chapter title.                    
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="name" type="xs:string">
+            <xs:annotation>
+                <xs:appinfo>Chapter Name</xs:appinfo>
+                <xs:documentation>
+                    The chapter name. Used as link reference.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="video" mixed="true">
+        <xs:annotation>
+            <xs:appinfo>Video</xs:appinfo>
+            <xs:documentation>
+                Display a video or a preview in the target document.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="source" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:appinfo>Video URL</xs:appinfo>
+                <xs:documentation>
+                    The video URL.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="title" type="xs:string" use="optional" >
+            <xs:annotation>
+                <xs:appinfo>Tooltip</xs:appinfo>
+                <xs:documentation>
+                    The video tooltip.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    
+    <xs:complexType name="image" mixed="true">
+        <xs:annotation>
+            <xs:appinfo>Image</xs:appinfo>
+            <xs:documentation>
+                Display a image in the target document.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="source" type="xs:string" use="required" >
+            <xs:annotation>
+                <xs:appinfo>Image URL</xs:appinfo>
+                <xs:documentation>
+                    The image URL.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="title" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:appinfo>Tooltip</xs:appinfo>
+                <xs:documentation>
+                    The image tooltip.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    
+    <xs:complexType name="link" mixed="true">
+        <xs:annotation>
+            <xs:appinfo>Link</xs:appinfo>
+            <xs:documentation>
+                Defines a link to another location (extern URL or referenced element).
+            </xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="target" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:appinfo>Target URL</xs:appinfo>
+                <xs:documentation>
+                    The link target URL.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="title" type="xs:string" use="optional">
+            <xs:annotation>
+                <xs:appinfo>Tooltip</xs:appinfo>
+                <xs:documentation>
+                    The link tooltip.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Using mixed="true" to allow mixing element and CDATA -->
+    <xs:complexType name="paragraph" mixed="true">
+        <xs:annotation>
+            <xs:appinfo>Paragraph</xs:appinfo>
+            <xs:documentation>
+                A paragraph within a chapter, optionally containing media like video or image.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="video" type="video" />
+                <xs:element name="image" type="image" />
+                <xs:element name="link" type="link" />                                
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="title" type="xs:string">
+            <xs:annotation>
+                <xs:appinfo>Paragraph Title</xs:appinfo>
+                <xs:documentation>
+                    The paragraph title.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="name" type="xs:string">
+            <xs:annotation>
+                <xs:appinfo>Paragraph Name</xs:appinfo>
+                <xs:documentation>
+                    The paragraph name. Used as link reference.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+</xs:schema>

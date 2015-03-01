@@ -1,0 +1,15 @@
+/* Cascade style sheet based on slimbook.dtd DTD */
+ns1:book { display: block }
+ns1:page { display: block }
+ns1:info { display: block }
+ns1:title { display: block }
+ns1:date { display: block }
+ns1:version { display: block }
+ns1:author { display: block }
+ns1:name { display: block }
+ns1:email { display: block }
+ns1:chapter { display: block }
+ns1:paragraph { display: block }
+ns1:video { display: block }
+ns1:image { display: block }
+ns1:link { display: block }

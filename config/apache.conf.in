@@ -1,0 +1,8 @@
+# 
+# Defines a SlimBook handler for the Apache web server:
+# 
+<Directory /var/www/localhost/htdocs>
+    <IfModule mod_mime.c>
+        AddHandler /var/www/localhost/apps/slimbook/public/handler.php .xml
+    </IfModule>
+</Directory>

@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>DTD Grammar Documentation</title>
+        <meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8" />
+        <style src="slimbook.css" type="text/css"></style>
+    </head>
+
+    <!-- Generated on Mar 1, 2015 by NetBeans XML module. -->
+    <body>
+        <h1>DTD documentation for the SlimBook XML schema.</h1>
+        <p>Use either <u>book</u> or <u>page</u> as root element in your XML document:</p>
+        <pre>
+    &lt;?xml version="1.0"?&gt;
+    &lt;!DOCTYPE ns1:book SYSTEM "slimbook.dtd"&gt;
+    &lt;ns1:book&gt;
+    ...
+    &lt;/ns1:book&gt;
+
+    &lt;?xml version="1.0"?&gt;
+    &lt;!DOCTYPE ns1:page SYSTEM "slimbook.dtd"&gt;
+    &lt;ns1:page&gt;
+    ...
+    &lt;/ns1:page&lt;            
+        </pre>
+        <hr />
+        <h2>Element Index</h2>
+        <ul><li><tt><a href="#ns1:author">ns1:author</a></tt></li>
+            <li><tt><a href="#ns1:book">ns1:book</a></tt></li>
+            <li><tt><a href="#ns1:chapter">ns1:chapter</a></tt></li>
+            <li><tt><a href="#ns1:date">ns1:date</a></tt></li>
+            <li><tt><a href="#ns1:email">ns1:email</a></tt></li>
+            <li><tt><a href="#ns1:image">ns1:image</a></tt></li>
+            <li><tt><a href="#ns1:info">ns1:info</a></tt></li>
+            <li><tt><a href="#ns1:link">ns1:link</a></tt></li>
+            <li><tt><a href="#ns1:name">ns1:name</a></tt></li>
+            <li><tt><a href="#ns1:page">ns1:page</a></tt></li>
+            <li><tt><a href="#ns1:paragraph">ns1:paragraph</a></tt></li>
+            <li><tt><a href="#ns1:title">ns1:title</a></tt></li>
+            <li><tt><a href="#ns1:version">ns1:version</a></tt></li>
+            <li><tt><a href="#ns1:video">ns1:video</a></tt></li>
+        </ul>
+
+        <hr />
+        <h2>Element Details</h2>
+
+
+        <hr />
+        <h2><a name="ns1:book"></a>ns1:book</h2>
+        <div>This element defines a book containing zero or more chapters. Suitable for 
+            type setting a book or creating a set of related web pages.</div>
+        <p><b>Declared Attributes</b></p>
+        <ul><li><tt>#IMPLIED CDATA xmlns:ns1</tt></li>
+            <li><tt>#IMPLIED CDATA xsi:schemaLocation</tt></li>
+            <li><tt>#IMPLIED CDATA xmlns:xsi</tt></li>
+        </ul>
+        <p><b>Element Content Model</b></p>
+        <p><tt>(<a href="#ns1:info">ns1:info</a>&nbsp;| <a href="#ns1:chapter">ns1:chapter</a>)*</tt></p>
+        <p><b>Referenced by</b></p>
+        <p><tt></tt></p>
+
+
+        <hr />
+        <h2><a name="ns1:page"></a>ns1:page</h2>
+        <div>This element defines a single page containing zero or more paragraphs. 
+            Suitable for a single web page.</div>
+        <p><b>Declared Attributes</b></p>
+        <ul><li><tt>#IMPLIED CDATA xmlns:ns1</tt></li>
+            <li><tt>#IMPLIED CDATA xsi:schemaLocation</tt></li>
+            <li><tt>#IMPLIED CDATA xmlns:xsi</tt></li>
+        </ul>
+        <p><b>Element Content Model</b></p>
+        <p><tt>(<a href="#ns1:info">ns1:info</a>&nbsp;| <a href="#ns1:chapter">ns1:chapter</a>)*</tt></p>
+        <p><b>Referenced by</b></p>
+        <p><tt></tt></p>
+
+
+        <hr />
+        <h2><a name="ns1:info"></a>ns1:info</h2>
+        <div>Defines the book or page information.</div>
+        <p><b>Element Content Model</b></p>
+        <p><tt>(<a href="#ns1:title">ns1:title</a>&nbsp;| <a href="#ns1:author">ns1:author</a>&nbsp;| <a href="#ns1:version">ns1:version</a>&nbsp;| <a href="#ns1:date">ns1:date</a>)*</tt></p>
+        <p><b>Referenced by</b></p>
+        <p><tt><a href="#ns1:book">ns1:book</a>, <a href="#ns1:page">ns1:page</a></tt></p>
+
+
+        <hr />
+        <h2><a name="ns1:title"></a>ns1:title</h2>
+        <div>The book or page title. Also tooltip for video, image or link elements.</div>
+        <p><b>Element Content Model</b></p>
+        <p><tt>EMPTY</tt></p>
+        <p><b>Referenced by</b></p>
+        <p><tt><a href="#ns1:info">ns1:info</a></tt></p>
+
+
+        <hr />
+        <h2><a name="ns1:date"></a>ns1:date</h2>
+        <div>The publish date.</div>
+        <p><b>Element Content Model</b></p>
+        <p><tt>(#PCDATA)*</tt></p>
+        <p><b>Referenced by</b></p>
+        <p><tt><a href="#ns1:info">ns1:info</a></tt></p>
+
+
+        <hr />
+        <h2><a name="ns1:version"></a>ns1:version</h2>
+        <div>The document version.</div>
+        <p><b>Element Content Model</b></p>
+        <p><tt>EMPTY</tt></p>
+        <p><b>Referenced by</b></p>
+        <p><tt><a href="#ns1:info">ns1:info</a></tt></p>
+
+
+        <hr />
+        <h2><a name="ns1:author"></a>ns1:author</h2>
+        <div>Defines the author information.</div>
+        <p><b>Element Content Model</b></p>
+        <p><tt>(<a href="#ns1:email">ns1:email</a>&nbsp;| <a href="#ns1:name">ns1:name</a>)*</tt></p>
+        <p><b>Referenced by</b></p>
+        <p><tt><a href="#ns1:info">ns1:info</a></tt></p>
+
+
+        <hr />
+        <h2><a name="ns1:name"></a>ns1:name</h2>
+        <div>The author full name.</div>
+        <p><b>Element Content Model</b></p>
+        <p><tt>EMPTY</tt></p>
+        <p><b>Referenced by</b></p>
+        <p><tt><a href="#ns1:author">ns1:author</a></tt></p>
+
+
+        <hr />
+        <h2><a name="ns1:email"></a>ns1:email</h2>
+        <div>The author email address.</div>
+        <p><b>Element Content Model</b></p>
+        <p><tt>EMPTY</tt></p>
+        <p><b>Referenced by</b></p>
+        <p><tt><a href="#ns1:author">ns1:author</a></tt></p>
+
+
+        <hr />
+        <h2><a name="ns1:chapter"></a>ns1:chapter</h2>
+        <div>Defines a single chapter.</div>
+        <p><b>Declared Attributes</b></p>
+        <ul><li><tt>#IMPLIED CDATA title</tt></li>
+            <li><tt>#IMPLIED CDATA name</tt></li>
+        </ul>
+        <p><b>Element Content Model</b></p>
+        <p><tt>(<a href="#ns1:paragraph">ns1:paragraph</a>)*</tt></p>
+        <p><b>Referenced by</b></p>
+        <p><tt><a href="#ns1:book">ns1:book</a>, <a href="#ns1:page">ns1:page</a></tt></p>
+
+
+        <hr />
+        <h2><a name="ns1:paragraph"></a>ns1:paragraph</h2>
+        <div>A paragraph within a chapter, optionally containing media like video or image.</div>
+        <p><b>Declared Attributes</b></p>
+        <ul><li><tt>#IMPLIED CDATA title</tt></li>
+            <li><tt>#IMPLIED CDATA name</tt></li>
+        </ul>
+        <p><b>Element Content Model</b></p>
+        <p><tt>(<a href="#ns1:video">ns1:video</a>&nbsp;| <a href="#ns1:image">ns1:image</a>&nbsp;| <a href="#ns1:link">ns1:link</a>)*</tt></p>
+        <p><b>Referenced by</b></p>
+        <p><tt><a href="#ns1:chapter">ns1:chapter</a></tt></p>
+
+
+        <hr />
+        <h2><a name="ns1:video"></a>ns1:video</h2>
+        <div>Display a video or a preview in the target document.</div>
+        <p><b>Declared Attributes</b></p>
+        <ul><li><tt>#IMPLIED CDATA source</tt></li>
+            <li><tt>#IMPLIED CDATA title</tt></li>
+        </ul>
+        <p><b>Element Content Model</b></p>
+        <p><tt>EMPTY</tt></p>
+        <p><b>Referenced by</b></p>
+        <p><tt><a href="#ns1:paragraph">ns1:paragraph</a></tt></p>
+
+
+        <hr />
+        <h2><a name="ns1:image"></a>ns1:image</h2>
+        <div>Display a image in the target document.</div>
+        <p><b>Declared Attributes</b></p>
+        <ul><li><tt>#IMPLIED CDATA source</tt></li>
+            <li><tt>#IMPLIED CDATA title</tt></li>
+        </ul>
+        <p><b>Element Content Model</b></p>
+        <p><tt>EMPTY</tt></p>
+        <p><b>Referenced by</b></p>
+        <p><tt><a href="#ns1:paragraph">ns1:paragraph</a></tt></p>
+
+
+        <hr />
+        <h2><a name="ns1:link"></a>ns1:link</h2>
+        <div>Defines a link to another location (extern URL or referenced element).</div>
+        <p><b>Declared Attributes</b></p>
+        <ul><li><tt>#IMPLIED CDATA target</tt></li>
+            <li><tt>#IMPLIED CDATA title</tt></li>
+        </ul>
+        <p><b>Element Content Model</b></p>
+        <p><tt>EMPTY</tt></p>
+        <p><b>Referenced by</b></p>
+        <p><tt><a href="#ns1:paragraph">ns1:paragraph</a></tt></p>
+    </body></html>
