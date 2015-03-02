@@ -1,8 +1,14 @@
 # 
-# Defines a SlimBook handler for the Apache web server:
+# Defines a SlimBook handler. 
 # 
-<Directory /var/www/localhost/htdocs>
-    <IfModule mod_mime.c>
-        AddHandler /var/www/localhost/apps/slimbook/public/handler.php .xml
-    </IfModule>
+# Adjust the AliasMatch to match the locations from where to serve XML document 
+# through the handle. Multiple AliasMatch can be defined, possibly with custom 
+# file extension.
+# 
+# 
+
+AliasMatch ^(/slimbook/.*.xml) /var/www/localhost/apps/slimbook/public/handler.php
+
+<Directory /var/www/localhost/apps/slimbook>
+    Allow from all
 </Directory>
