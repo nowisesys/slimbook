@@ -28,11 +28,35 @@ use SlimBook\Handler;
 class Html implements Formatter
 {
 
+        /**
+         * The page info.
+         * @var \SimpleXMLElement 
+         */
+        private $info;
+        /**
+         * The page chapters.
+         * @var \SimpleXMLElement 
+         */
+        private $chapters = array();
+
         public function render(Handler $handler)
         {
-                $xmldoc = $handler->getDocument();
-                $chapter = $handler->getChapter();
-                print_r($handler);
+                
+        }
+
+        public function setInfo(\SimpleXMLElement $simple)
+        {
+                $this->info = $simple;
+        }
+
+        public function addChapter($simple)
+        {
+                $this->chapters[] = $simple;
+        }
+
+        public function setChapters($simple)
+        {
+                $this->chapters = $simple;
         }
 
 }

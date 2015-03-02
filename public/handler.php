@@ -30,21 +30,19 @@ use SlimBook\Render\Html as HtmlFormatter;
 
 require_once(realpath(__DIR__ . '/../vendor/autoload.php'));
 
-//$xml = simplexml_load_file('/var/www/localhost/htdocs/slimbook/book.xml', 'SimpleXMLElement', 0, 'ns1', true);
-//print_r($xml);
-//print_r($xml->getNamespaces());
-//print_r($xml->children());
-//exit(1);
-
-$xml = simplexml_load_file('/var/www/localhost/htdocs/slimbook/book.xml');
-print_r($xml);
-print_r($xml->getNamespaces());
-print_r($xml->children('ns1', true));
-exit(1);
-
+// 
+// Build XML document path:
+// 
 $xmldoc = sprintf("%s%s", filter_input(INPUT_SERVER, 'DOCUMENT_ROOT'), filter_input(INPUT_SERVER, 'SCRIPT_NAME'));
 
+// 
+// Create output handler object:
+// 
 $handler = new Handler($xmldoc);
 $handler->setFormatter(new HtmlFormatter());
 $handler->setChapter(filter_input(INPUT_GET, 'chapter'));
+
+// 
+// Send output:
+// 
 $handler->output();

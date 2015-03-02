@@ -19,6 +19,7 @@
 namespace SlimBook;
 
 use SimpleXMLElement;
+use SlimBook\Filter\XmlFilter;
 use SlimBook\Render\Formatter;
 
 /**
@@ -28,6 +29,10 @@ use SlimBook\Render\Formatter;
  */
 class Handler
 {
+        /**
+         * The SlimBook namespace.
+         */
+        const NS = 'http://it.bmc.uu.se/compdept/slimbook';
 
         /**
          * The XML document path.
@@ -57,6 +62,7 @@ class Handler
         public function __construct($xmldoc)
         {
                 $this->xmldoc = $xmldoc;
+                $this->simple = simplexml_load_file($this->xmldoc, null, 0, self::NS);
         }
 
         /**
@@ -78,15 +84,11 @@ class Handler
         }
 
         /**
-         * Load and return SimpleXML object.
+         * Return the XML object.
          * @return SimpleXMLElement
          */
         public function getDocument()
         {
-                if (!isset($this->simple)) {
-                        $this->simple = simplexml_load_file($this->xmldoc);
-                }
-                
                 return $this->simple;
         }
 
@@ -100,11 +102,46 @@ class Handler
         }
 
         /**
+         * Get target namespace.
+         * @return string The target namespace.
+         */
+        public function getNamespace()
+        {
+                foreach ($this->simple->getNamespaces() as $ns) {
+                        if ($ns == self::NS) {
+                                return $ns;
+                        }
+                }
+
+                return null;
+        }
+
+        /**
+         * Get target namespace prefix.
+         * @return string|boolean The target namespace prefix or false if not set.
+         */
+        public function getPrefix()
+        {
+                foreach ($this->simple->getNamespaces() as $prefix => $ns) {
+                        if ($ns == self::NS) {
+                                return $prefix;
+                        }
+                }
+
+                return false;
+        }
+
+        /**
          * Output document using current set output formatter.
          */
         public function output()
         {
-                $this->formatter->render($this);
+                $filter = new XmlFilter($this->simple);
+
+                $this->formatter->setInfo($filter->getInfo());
+                $this->formatter->setChapters($filter->getChapters($this->getChapter()));
+
+                $this->formatter->render($this, $this->getNamespace());
         }
 
 }
