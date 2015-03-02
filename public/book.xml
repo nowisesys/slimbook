@@ -7,32 +7,32 @@
     xsi:schemaLocation='http://it.bmc.uu.se/compdept/slimbook slimbook.xsd'>
     <!-- Book information -->
     <ns1:info>
-        <ns1:title></ns1:title>
+        <ns1:title>Book title</ns1:title>
         <ns1:date>1970-01-01</ns1:date>
-        <ns1:version></ns1:version>
+        <ns1:version>1.0</ns1:version>
         <ns1:author>
-            <ns1:name></ns1:name>
-            <ns1:email></ns1:email>
+            <ns1:name>Anders Lövgren</ns1:name>
+            <ns1:email>anders.lovgren@bmc.uu.se</ns1:email>
         </ns1:author>
     </ns1:info>
 
     <!-- Chapters can have zero or more paragraphs -->
-    <ns1:chapter title="" name="">
+    <ns1:chapter title="Chapter 1" name="chap1">
     </ns1:chapter>
     
-    <ns1:chapter title="" name="">
-        <ns1:paragraph title="" name="">
+    <ns1:chapter title="Chapter 2" name="chap2">
+        <ns1:paragraph title="Section 1" name="para1">
         </ns1:paragraph>
     </ns1:chapter>    
     
-    <ns1:chapter title="" name="">
-        <ns1:paragraph title="" name="">
-            <ns1:video source="" title=""></ns1:video>
-            <ns1:image source="" title=""></ns1:image>
-            <ns1:link target="" title=""></ns1:link>
+    <ns1:chapter title="Chapter 3" name="chap3">
+        <ns1:paragraph title="Section 1" name="para1">
+            <ns1:video source="http://example.com/video.mng" title="Video 1"></ns1:video>
+            <ns1:image source="http://example.com/image.png" title="Image 1"></ns1:image>
+            <ns1:link target="?/chap2/para1" title="Navigate to 2.1">2.1</ns1:link>
         </ns1:paragraph>
         
-        <ns1:paragraph title="" name="">
+        <ns1:paragraph title="Section 2" name="para2">
         </ns1:paragraph>
     </ns1:chapter>
 
