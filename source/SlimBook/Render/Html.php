@@ -18,45 +18,67 @@
 
 namespace SlimBook\Render;
 
-use SlimBook\Handler;
+use Exception;
 
 /**
  * HTML output render class.
  *
  * @author Anders Lövgren (QNET/BMC CompDept)
  */
-class Html implements Formatter
+class Html extends FormatterBase
 {
 
         /**
-         * The page info.
-         * @var \SimpleXMLElement 
+         * The output stream.
+         * @var resource 
          */
-        private $info;
-        /**
-         * The page chapters.
-         * @var \SimpleXMLElement 
-         */
-        private $chapters = array();
+        private $stream;
 
-        public function setInfo(\SimpleXMLElement $simple)
+        public function write($mode = Formatter::WRITE_ALL, $file = null)
         {
-                $this->info = $simple;
+                if (!isset($file)) {
+                        $file = Formatter::FILE_STDOUT;
+                }
+                if (!($this->stream = fopen($file, "w"))) {
+                        throw new Exception("Failed open output stream: $file");
+                }
+
+                if ($mode & Formatter::WRITE_TITLE) {
+                        
+                }
+                if ($mode & Formatter::WRITE_TOC) {
+                        
+                }
+                if ($mode & Formatter::WRITE_BODY) {
+                        
+                }
+                if ($mode & Formatter::WRITE_FOOTER) {
+                        
+                }
         }
 
-        public function addChapter($simple)
+        private function writeTitle()
         {
-                $this->chapters[] = $simple;
+                if (count($this->chapters) == 1) {
+                        fprintf("<title>%s - %s</title>\n", $this->info->title, $this->chapters[0]['title']);
+                } else {
+                        fprintf("<title>%s</title>\n", $this->info->title);                        
+                }
         }
 
-        public function setChapters($simple)
+        private function writeTOC()
         {
-                $this->chapters = $simple;
+                
         }
 
-        public function setChapter($simple)
+        private function writeBody()
         {
-                $this->chapters = array($simple);
+                
+        }
+
+        private function writeFooter()
+        {
+                
         }
 
 }

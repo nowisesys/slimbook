@@ -26,10 +26,35 @@ use SimpleXMLElement;
  */
 interface Formatter
 {
+
         /**
          * HTML rendition.
          */
         const RENDER_HTML = "html";
+        /**
+         * Write document title.
+         */
+        const WRITE_TITLE = 1;
+        /**
+         * Write table of content (TOC).
+         */
+        const WRITE_TOC = 2;
+        /**
+         * Write document body.
+         */
+        const WRITE_BODY = 4;
+        /**
+         * Write document footer.
+         */
+        const WRITE_FOOTER = 8;
+        /**
+         * Write all document parts.
+         */
+        const WRITE_ALL = 15;
+        /**
+         * Use standard output.
+         */
+        const FILE_STDOUT = "php://stdout";
 
         /**
          * Set page/book information.
@@ -48,10 +73,20 @@ interface Formatter
          * @param array $simple Array of simple XML objects.
          */
         function setChapters($simple);
-        
+
         /**
          * Set chapter to render.
          * @param SimpleXMLElement $simple
          */
         function setChapter($simple);
+
+        /**
+         * Write document content.
+         * 
+         * If $file is null, then output is written to stdout.
+         * 
+         * @param int $mode One or more of the WRITE_XXX constants.
+         * @param string $file The output file.
+         */
+        function write($mode = Formatter::WRITE_ALL, $file = null);
 }
