@@ -40,7 +40,7 @@ $xmldoc = sprintf("%s%s", filter_input(INPUT_SERVER, 'DOCUMENT_ROOT'), filter_in
 // 
 $handler = new Handler($xmldoc);
 $handler->setFormatter(new HtmlFormatter());
-$handler->setChapter(filter_input(INPUT_GET, 'chapter'));
+$handler->setFilter(filter_input(INPUT_GET, 'chapter'));
 
 // 
 // Send output:

@@ -29,6 +29,7 @@ use SlimBook\Render\Formatter;
  */
 class Handler
 {
+
         /**
          * The SlimBook namespace.
          */
@@ -69,7 +70,7 @@ class Handler
          * Set the chapter to process.
          * @param string $chapter
          */
-        public function setChapter($chapter)
+        public function setFilter($chapter)
         {
                 $this->chapter = $chapter;
         }
@@ -78,7 +79,7 @@ class Handler
          * Get the chapter to process.
          * @return string
          */
-        public function getChapter()
+        public function getFilter()
         {
                 return $this->chapter;
         }
@@ -139,7 +140,7 @@ class Handler
                 $filter = new XmlFilter($this->simple);
 
                 $this->formatter->setInfo($filter->getInfo());
-                $this->formatter->setChapters($filter->getChapters($this->getChapter()));
+                $this->formatter->setChapters($filter->getChapters($this->getFilter()));
 
                 $this->formatter->render($this, $this->getNamespace());
         }
