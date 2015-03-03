@@ -19,7 +19,6 @@
 namespace SlimBook\Render;
 
 use SimpleXMLElement;
-use SlimBook\Handler;
 
 /**
  * Interface for output formatter (render classes).
@@ -27,12 +26,10 @@ use SlimBook\Handler;
  */
 interface Formatter
 {
-
         /**
-         * The render function.
-         * @param Handler $handler The handler object.
+         * HTML rendition.
          */
-        function render(Handler $handler);
+        const RENDER_HTML = "html";
 
         /**
          * Set page/book information.
@@ -51,4 +48,10 @@ interface Formatter
          * @param array $simple Array of simple XML objects.
          */
         function setChapters($simple);
+        
+        /**
+         * Set chapter to render.
+         * @param SimpleXMLElement $simple
+         */
+        function setChapter($simple);
 }

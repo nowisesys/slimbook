@@ -45,4 +45,4 @@ $handler->setFilter(filter_input(INPUT_GET, 'chapter'));
 // 
 // Send output:
 // 
-$handler->output();
+$formatter = $handler->prepare();

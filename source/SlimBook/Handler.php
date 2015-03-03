@@ -21,6 +21,7 @@ namespace SlimBook;
 use SimpleXMLElement;
 use SlimBook\Filter\XmlFilter;
 use SlimBook\Render\Formatter;
+use SlimBook\Render\Html as HtmlFormatter;
 
 /**
  * The handler for SLimBook XML documents.
@@ -42,7 +43,7 @@ class Handler
         private $xmldoc;
         /**
          * The SimpleXML object.
-         * @var \SimpleXMLElement 
+         * @var SimpleXMLElement 
          */
         private $simple;
         /**
@@ -133,16 +134,37 @@ class Handler
         }
 
         /**
-         * Output document using current set output formatter.
+         * Prepare formatter.
+         * 
+         * Prepares a formatter for output by initializing it with info and chapters 
+         * using the current loaded XML document and filter options. 
+         * 
+         * The formatter argument is either a string (create new formatter) or an 
+         * object (use the passed formatter). If argument is null, then the formatter
+         * set by calling setFormatter() is used.
+         * 
+         * The $formatter can be one of the RENDER_XXX constants defined by the 
+         * Formatter interface.
+         * 
+         * @param string|Formatter $formatter The formatter object or string.
+         * @return Formatter
          */
-        public function output()
+        public function prepare($formatter = null)
         {
+                if (!isset($formatter)) {
+                        $formatter = $this->formatter;
+                } elseif (is_string($formatter)) {
+                        if ($formatter == Formatter::RENDER_HTML) {
+                                $formatter = new HtmlFormatter();
+                        }
+                }
+                
                 $filter = new XmlFilter($this->simple);
 
-                $this->formatter->setInfo($filter->getInfo());
-                $this->formatter->setChapters($filter->getChapters($this->getFilter()));
+                $formatter->setInfo($filter->getInfo());
+                $formatter->setChapters($filter->getChapters($this->getFilter()));
 
-                $this->formatter->render($this, $this->getNamespace());
+                return $formatter;
         }
 
 }

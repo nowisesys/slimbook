@@ -39,11 +39,6 @@ class Html implements Formatter
          */
         private $chapters = array();
 
-        public function render(Handler $handler)
-        {
-                
-        }
-
         public function setInfo(\SimpleXMLElement $simple)
         {
                 $this->info = $simple;
@@ -57,6 +52,11 @@ class Html implements Formatter
         public function setChapters($simple)
         {
                 $this->chapters = $simple;
+        }
+
+        public function setChapter($simple)
+        {
+                $this->chapters = array($simple);
         }
 
 }
