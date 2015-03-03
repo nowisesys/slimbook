@@ -31,6 +31,13 @@ use SlimBook\Render\Html as HtmlFormatter;
 require_once(realpath(__DIR__ . '/../vendor/autoload.php'));
 
 // 
+// Make sure that script is invoked properly:
+// 
+if (basename(__FILE__) == basename(filter_input(INPUT_SERVER, 'SCRIPT_NAME'))) {
+        die("Called with itself as document.");
+}
+
+// 
 // Build XML document path:
 // 
 $xmldoc = sprintf("%s%s", filter_input(INPUT_SERVER, 'DOCUMENT_ROOT'), filter_input(INPUT_SERVER, 'SCRIPT_NAME'));
@@ -46,3 +53,4 @@ $handler->setFilter(filter_input(INPUT_GET, 'chapter'));
 // Send output:
 // 
 $formatter = $handler->prepare();
+$formatter->write();
