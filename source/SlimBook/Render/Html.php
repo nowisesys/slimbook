@@ -203,10 +203,12 @@ class Html extends FormatterBase
         private function writeVideo($child)
         {
                 printf("<div class=\"video\">\n");
+                printf("<div class=\"view\">\n");
                 printf("<video controls>\n");
-                printf("<source src=\"%s\" type=\"video/mp4\">\n", $child->getAttribute('source'));
+                printf("<source src=\"%s\" type=\"video/webm\">\n", $child->getAttribute('source'));
                 printf("Your browser does not support the video tag.\n");
                 printf("</video>\n");
+                printf("</div>\n");
                 printf("<p>%s</p>\n", $child->getAttribute('title'));
                 printf("</div>\n");
         }
@@ -218,7 +220,9 @@ class Html extends FormatterBase
         private function writeImage($child)
         {
                 printf("<div class=\"image\">\n");
-                printf("<img src=\"%s\" />\n", $child->getAttribute('source'));
+                printf("<div class=\"view\">\n");
+                printf("<a href=\"%s\"><img src=\"%s\" /></a>\n", $child->getAttribute('source'), $child->getAttribute('source'));
+                printf("</div>\n");
                 printf("<p>%s</p>\n", $child->getAttribute('title'));
                 printf("</div>\n");
         }

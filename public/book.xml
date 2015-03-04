@@ -15,7 +15,7 @@
             <ns1:email>anders.lovgren@bmc.uu.se</ns1:email>
         </ns1:author>
     </ns1:info>
-
+    
     <!-- Chapters can have zero or more paragraphs -->
     <ns1:chapter title="Chapter 1" name="chap1">
     </ns1:chapter>
@@ -28,9 +28,9 @@
     <ns1:chapter title="Chapter 3" name="chap3">
         <ns1:paragraph title="Section 1" name="para1">
             This is a video:
-            <ns1:video source="http://example.com/video.mng" title="Video 1"></ns1:video>
+            <ns1:video source="http://it.bmc.uu.se/andlov/php/proj/bmc/slimbook/videos/small.webm" title="Video 1"></ns1:video>
             This is an image:
-            <ns1:image source="http://example.com/image.png" title="Image 1"></ns1:image>
+            <ns1:image source="http://it.bmc.uu.se/andlov/php/proj/bmc/slimbook/images/netbeans-auto-complete.png" title="Image 1"></ns1:image>
             This is a link:
             <ns1:link target="#chap2-para1" title="Navigate to 2.1 (HTML anchor link)">2.1</ns1:link>
             This is a link:
