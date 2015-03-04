@@ -202,10 +202,24 @@ class Html extends FormatterBase
          */
         private function writeVideo($child)
         {
+                $mimetypes = array(
+                        'mp4'  => 'video/mp4',
+                        'webm' => 'video/webm',
+                        'ogv'  => 'video/ogg',
+                        '3gp'  => 'video/3gp',
+                        'flv'  => 'video/x-flv',
+                        'std'  => 'application/binary'
+                );
+                if (($pos = strrpos($child->getAttribute('source'), "."))) {
+                        $extension = substr($child->getAttribute('source'), $pos + 1);
+                } else {
+                        $extension = 'std';
+                }
+
                 printf("<div class=\"video\">\n");
                 printf("<div class=\"view\">\n");
                 printf("<video controls>\n");
-                printf("<source src=\"%s\" type=\"video/webm\">\n", $child->getAttribute('source'));
+                printf("<source src=\"%s\" type=\"%s\">\n", $child->getAttribute('source'), $mimetypes[$extension]);
                 printf("Your browser does not support the video tag.\n");
                 printf("</video>\n");
                 printf("</div>\n");
