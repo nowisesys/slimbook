@@ -37,32 +37,33 @@ class Html extends FormatterBase
         public function write($mode = Formatter::WRITE_ALL, $file = null)
         {
                 if (!isset($file)) {
-                        $file = Formatter::FILE_STDOUT;
-                }
-                if (!($this->stream = fopen($file, "w"))) {
+                        $this->stream = fopen("php://output", "w");
+                } elseif (is_resource($file)) {
+                        $this->stream = $file;
+                } elseif (!($this->stream = fopen($file, "w"))) {
                         throw new Exception("Failed open output stream: $file");
                 }
 
                 if ($mode & Formatter::WRITE_TITLE) {
-                        
+                        $this->writeTitle();
                 }
                 if ($mode & Formatter::WRITE_TOC) {
-                        
+                        $this->writeTOC();
                 }
                 if ($mode & Formatter::WRITE_BODY) {
-                        
+                        $this->writeBody();
                 }
                 if ($mode & Formatter::WRITE_FOOTER) {
-                        
+                        $this->writeFooter();
                 }
         }
 
         private function writeTitle()
         {
                 if (count($this->chapters) == 1) {
-                        fprintf("<title>%s - %s</title>\n", $this->info->title, $this->chapters[0]['title']);
+                        fprintf($this->stream, "<title>%s - %s</title>\n", $this->info->title, $this->chapters[0]['title']);
                 } else {
-                        fprintf("<title>%s</title>\n", $this->info->title);                        
+                        fprintf($this->stream, "<title>%s</title>\n", $this->info->title);
                 }
         }
 

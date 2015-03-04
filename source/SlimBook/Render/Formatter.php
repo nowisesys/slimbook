@@ -51,10 +51,6 @@ interface Formatter
          * Write all document parts.
          */
         const WRITE_ALL = 15;
-        /**
-         * Use standard output.
-         */
-        const FILE_STDOUT = "php://stdout";
 
         /**
          * Set page/book information.
@@ -83,10 +79,8 @@ interface Formatter
         /**
          * Write document content.
          * 
-         * If $file is null, then output is written to stdout.
-         * 
          * @param int $mode One or more of the WRITE_XXX constants.
-         * @param string $file The output file.
+         * @param resource|string $file The output stream or destination file.
          */
         function write($mode = Formatter::WRITE_ALL, $file = null);
 }
