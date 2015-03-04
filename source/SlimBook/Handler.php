@@ -24,7 +24,7 @@ use SlimBook\Render\Formatter;
 use SlimBook\Render\Html as HtmlFormatter;
 
 /**
- * The handler for SLimBook XML documents.
+ * The handler for SlimBook XML documents.
  *
  * @author Anders Lövgren (QNET/BMC CompDept)
  */

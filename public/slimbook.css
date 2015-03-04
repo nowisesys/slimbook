@@ -35,11 +35,15 @@ div.slimbook-footer a:hover { text-decoration: underline }
 
 div.slimbook-main {}
 div.slimbook-main h1 {}
-div.slimbook-toc {}
+div.slimbook-toc { clear: left; float: right }
 div.slimbook-toc .chapter { font-weight: bold }
 div.slimbook-toc .paragraph {}
-div.slimbook-content {}
+div.slimbook-content { margin-bottom: 20px }
 div.slimbook-content .chapters {}
 div.slimbook-content .chapter {}
-div.slimbook-content .chapter h3 { margin-left: 20px; text-decoration: underline }
-div.slimbook-content p { margin-left: 20px }
+div.slimbook-content .chapter h3 { text-decoration: underline }
+div.slimbook-content .paragraph { margin-left: 20px }
+div.slimbook-content video { margin-top: 10px }
+div.slimbook-content .video p { font-style: italic; margin-top: 0px; font-size: 0.8em }
+div.slimbook-content .image p { font-style: italic; margin-top: 0px; font-size: 0.8em }
+div.slimbook-content img { margin-left: 20px; padding-top: 5px; border: none }

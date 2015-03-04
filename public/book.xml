@@ -27,12 +27,18 @@
     
     <ns1:chapter title="Chapter 3" name="chap3">
         <ns1:paragraph title="Section 1" name="para1">
+            This is a video:
             <ns1:video source="http://example.com/video.mng" title="Video 1"></ns1:video>
+            This is an image:
             <ns1:image source="http://example.com/image.png" title="Image 1"></ns1:image>
-            <ns1:link target="?/chap2/para1" title="Navigate to 2.1">2.1</ns1:link>
+            This is a link:
+            <ns1:link target="#chap2-para1" title="Navigate to 2.1 (HTML anchor link)">2.1</ns1:link>
+            This is a link:
+            <ns1:link target="/chap2/para1" title="Navigate to 2.1 (XPath selector)">2.1</ns1:link>
         </ns1:paragraph>
         
         <ns1:paragraph title="Section 2" name="para2">
+            Second paragraph with some more text.\nThis text should appear on new line.
         </ns1:paragraph>
     </ns1:chapter>
 

@@ -5,8 +5,12 @@
 This package provides a simple XML schema targeted at writing technical manuals
 in either book (multiple chapters) or page (single chapter) form.
 
-The XML schema can be used on its own. This package also provides code for 
-rendering an schema constraint XML document in various output format.
+The XML schema can be used on its own or together with the PHP classes provided
+by this package. Using the PHP classes, its possible to render the SlimBook XML
+document in various formats (e.g. HTML, PDF, DVI, MS Word or LaTeX/TeX). 
+
+This package can be integrated with Apache to provide an XML based web site 
+using the handler.php script.
 
 ** Directories:
 

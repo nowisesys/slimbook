@@ -18,6 +18,9 @@
 
 namespace SlimBook\Render;
 
+use DOMElement;
+use SimpleXMLElement;
+
 /**
  * HTML output render class.
  *
@@ -50,9 +53,9 @@ class Html extends FormatterBase
                 $this->close();
         }
 
-        // 
-        // Write complete HTML page.
-        // 
+        /**
+         * Write complete HTML page.
+         */
         private function writeDocument()
         {
                 $this->writeDocHeader();
@@ -66,6 +69,9 @@ class Html extends FormatterBase
                 printf("</html>\n");
         }
 
+        /**
+         * Write document header.
+         */
         private function writeDocHeader()
         {
                 printf("<!DOCTYPE html>\n");
@@ -81,9 +87,9 @@ class Html extends FormatterBase
                 printf("</head>\n");
         }
 
-        // 
-        // Write page title.
-        // 
+        /**
+         * Write page title.
+         */
         private function writeDocTitle()
         {
                 if (count($this->chapters) == 1) {
@@ -93,9 +99,9 @@ class Html extends FormatterBase
                 }
         }
 
-        // 
-        // Write table of content (select).
-        // 
+        /**
+         * Write table of content (select).
+         */
         private function writePageTOC()
         {
                 printf("\n");
@@ -112,9 +118,9 @@ class Html extends FormatterBase
                 printf("</div>\n");
         }
 
-        // 
-        // Write main content.
-        // 
+        /**
+         * Write main content.
+         */
         private function writePageBody()
         {
                 printf("\n");
@@ -126,23 +132,15 @@ class Html extends FormatterBase
                 }
                 printf("<div class=\"chapters\">\n");
                 foreach ($this->chapters as $chapter) {
-                        printf("<div class=\"chapter\">\n");
-                        printf("<a name=\"%s\"><h2>%s</h2></a>\n", $chapter->attributes()['name'], $chapter->attributes()['title']);
-                        foreach ($chapter->paragraph as $paragraph) {
-                                printf("<div class=\"paragraph\">\n");
-                                printf("<a name=\"%s-%s\"><h3>%s</h3></a>\n", $chapter->attributes()['name'], $paragraph->attributes()['name'], $paragraph->attributes()['title']);
-                                printf("<p>%s</p>\n", print_r($paragraph, true));
-                                printf("</div>\n");
-                        }
-                        printf("</div>\n");
+                        $this->writeChapter($chapter);
                 }
                 printf("</div>\n");
                 printf("</div>\n");
         }
 
-        // 
-        // Write page footer.
-        // 
+        /**
+         * Write page footer.
+         */
         private function writePageFooter()
         {
                 printf("\n");
@@ -151,6 +149,99 @@ class Html extends FormatterBase
                 printf("<div class=\"author\"><a href=\"mailto:%s\">%s</a></div>\n", $this->info->author->email, $this->info->author->name);
                 printf("<div class=\"version\">Version: %s</div>\n", $this->info->version);
                 printf("</div>\n");
+        }
+
+        private function writeChapter($chapter)
+        {
+                printf("<div class=\"chapter\">\n");
+                printf("<a name=\"%s\"><h2>%s</h2></a>\n", $chapter->attributes()['name'], $chapter->attributes()['title']);
+                foreach ($chapter->paragraph as $paragraph) {
+                        $this->writeParagraph($chapter, $paragraph);
+                }
+                printf("</div>\n");
+        }
+
+        /**
+         * Write a paragraph.
+         * @param SimpleXMLElement $chapter
+         * @param SimpleXMLElement $paragraph
+         */
+        private function writeParagraph($chapter, $paragraph)
+        {
+                printf("<div class=\"paragraph\">\n");
+                printf("<a name=\"%s-%s\"><h3>%s</h3></a>\n", $chapter->attributes()['name'], $paragraph->attributes()['name'], $paragraph->attributes()['title']);
+
+                $dom = dom_import_simplexml($paragraph);
+                foreach ($dom->childNodes as $child) {
+                        switch ($child->nodeType) {
+                                case XML_TEXT_NODE:
+                                        printf("%s\n", str_replace("\\n", "<br/>\n", trim($child->textContent)));
+                                        break;
+                                case XML_ELEMENT_NODE:
+                                        switch ($child->localName) {
+                                                case "video":
+                                                        $this->writeVideo($child);
+                                                        break;
+                                                case "image":
+                                                        $this->writeImage($child);
+                                                        break;
+                                                case "link":
+                                                        $this->writeLink($child);
+                                                        break;
+                                        }
+                                        break;
+                        }
+                }
+
+                printf("</div>\n");
+        }
+
+        /**
+         * Write video content.
+         * @param DOMElement $child
+         */
+        private function writeVideo($child)
+        {
+                printf("<div class=\"video\">\n");
+                printf("<video controls>\n");
+                printf("<source src=\"%s\" type=\"video/mp4\">\n", $child->getAttribute('source'));
+                printf("Your browser does not support the video tag.\n");
+                printf("</video>\n");
+                printf("<p>%s</p>\n", $child->getAttribute('title'));
+                printf("</div>\n");
+        }
+
+        /**
+         * Write image content.
+         * @param DOMElement $child
+         */
+        private function writeImage($child)
+        {
+                printf("<div class=\"image\">\n");
+                printf("<img src=\"%s\" />\n", $child->getAttribute('source'));
+                printf("<p>%s</p>\n", $child->getAttribute('title'));
+                printf("</div>\n");
+        }
+
+        /**
+         * Write link content.
+         * @param DOMElement $child
+         */
+        private function writeLink($child)
+        {
+                $target = $child->getAttribute('target');
+                $title = $child->getAttribute('title');
+
+                if ($target[0] == '/') {
+                        $parts = explode('/', $target);
+                        if (count($parts) == 3) {
+                                $target = "#" . $parts[1] . "-" . $parts[2];
+                        } else {
+                                $target = "#" . $parts[1];
+                        }
+                }
+
+                printf("<a href=\"%s\" title=\"%s\">%s</a>\n", $target, $title, $child->nodeValue);
         }
 
 }
