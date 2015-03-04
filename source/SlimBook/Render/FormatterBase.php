@@ -18,6 +18,7 @@
 
 namespace SlimBook\Render;
 
+use Exception;
 use SimpleXMLElement;
 
 /**
@@ -26,6 +27,7 @@ use SimpleXMLElement;
  */
 abstract class FormatterBase implements Formatter
 {
+
         /**
          * The page info.
          * @var SimpleXMLElement 
@@ -36,8 +38,13 @@ abstract class FormatterBase implements Formatter
          * @var SimpleXMLElement 
          */
         protected $chapters = array();
+        /**
+         * The output stream.
+         * @var resource 
+         */
+        private $stream;
 
-        public function setInfo(SimpleXMLElement $simple)
+        public function setInfo($simple)
         {
                 $this->info = $simple;
         }
@@ -58,5 +65,36 @@ abstract class FormatterBase implements Formatter
         }
 
         abstract public function write($mode = Formatter::WRITE_ALL, $file = null);
+
+        /**
+         * Open stream and start output buffering.
+         * @param string $file The destination file.
+         * @throws Exception
+         */
+        protected function open($file)
+        {
+                if (isset($file)) {
+                        if (is_resource($file)) {
+                                $this->stream = $file;
+                        } else {
+                                $this->stream = fopen($file, "w");
+                        }
+                        if (!is_resource($this->stream)) {
+                                throw new Exception("Invalid output stream");
+                        } else {
+                                ob_start();
+                        }
+                }
+        }
+
+        /**
+         * Close output buffering and flush content to opened stream.
+         */
+        protected function close()
+        {
+                if (isset($this->stream)) {
+                        fwrite($this->stream, ob_get_clean());
+                }
+        }
 
 }

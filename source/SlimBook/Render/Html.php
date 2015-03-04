@@ -18,8 +18,6 @@
 
 namespace SlimBook\Render;
 
-use Exception;
-
 /**
  * HTML output render class.
  *
@@ -28,21 +26,9 @@ use Exception;
 class Html extends FormatterBase
 {
 
-        /**
-         * The output stream.
-         * @var resource 
-         */
-        private $stream;
-
         public function write($mode = Formatter::WRITE_ALL, $file = null)
         {
-                if (!isset($file)) {
-                        $this->stream = fopen("php://output", "w");
-                } elseif (is_resource($file)) {
-                        $this->stream = $file;
-                } elseif (!($this->stream = fopen($file, "w"))) {
-                        throw new Exception("Failed open output stream: $file");
-                }
+                $this->open($file);
 
                 if ($mode & Formatter::WRITE_TITLE) {
                         $this->writeTitle();
@@ -56,14 +42,16 @@ class Html extends FormatterBase
                 if ($mode & Formatter::WRITE_FOOTER) {
                         $this->writeFooter();
                 }
+
+                $this->close();
         }
 
         private function writeTitle()
         {
                 if (count($this->chapters) == 1) {
-                        fprintf($this->stream, "<title>%s - %s</title>\n", $this->info->title, $this->chapters[0]['title']);
+                        printf("<title>%s - %s</title>\n", $this->info->title, $this->chapters[0]['title']);
                 } else {
-                        fprintf($this->stream, "<title>%s</title>\n", $this->info->title);
+                        printf("<title>%s</title>\n", $this->info->title);
                 }
         }
 

@@ -53,4 +53,4 @@ $handler->setFilter(filter_input(INPUT_GET, 'chapter'));
 // Send output:
 // 
 $formatter = $handler->prepare();
-$formatter->write();
+$formatter->write(SlimBook\Render\Formatter::WRITE_ALL, "/tmp/file.html");

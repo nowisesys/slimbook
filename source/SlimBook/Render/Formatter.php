@@ -18,8 +18,6 @@
 
 namespace SlimBook\Render;
 
-use SimpleXMLElement;
-
 /**
  * Interface for output formatter (render classes).
  * @author Anders Lövgren (QNET/BMC CompDept)
@@ -56,7 +54,7 @@ interface Formatter
          * Set page/book information.
          * @param SimpleXMLElement $simple
          */
-        function setInfo(SimpleXMLElement $simple);
+        function setInfo($simple);
 
         /**
          * Add chapter to render.
@@ -79,7 +77,7 @@ interface Formatter
         /**
          * Write document content.
          * 
-         * @param int $mode One or more of the WRITE_XXX constants.
+         * @param int $mode The write mode. One or more of the WRITE_XXX constants.
          * @param resource|string $file The output stream or destination file.
          */
         function write($mode = Formatter::WRITE_ALL, $file = null);
