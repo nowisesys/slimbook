@@ -50,7 +50,7 @@ $handler->setFormatter(new HtmlFormatter());
 $handler->setFilter(filter_input(INPUT_GET, 'chapter'));
 
 // 
-// Send output:
+// Send HTML output:
 // 
 $formatter = $handler->prepare();
-$formatter->write(SlimBook\Render\Formatter::WRITE_ALL, "/tmp/file.html");
+$formatter->write();
