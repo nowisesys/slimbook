@@ -207,19 +207,22 @@ class Html extends FormatterBase
                         'webm' => 'video/webm',
                         'ogv'  => 'video/ogg',
                         '3gp'  => 'video/3gp',
-                        'flv'  => 'video/x-flv',
-                        'std'  => 'application/binary'
+                        'flv'  => 'video/x-flv'
                 );
+                
                 if (($pos = strrpos($child->getAttribute('source'), "."))) {
                         $extension = substr($child->getAttribute('source'), $pos + 1);
-                } else {
-                        $extension = 'std';
+                        $mimetype = $mimetypes[$extension];
+                }
+                if (!isset($mimetype)) {
+                        $headers = get_headers($child->getAttribute('source'), 1);
+                        $mimetype = $headers['Content-Type'];
                 }
 
                 printf("<div class=\"video\">\n");
                 printf("<div class=\"view\">\n");
                 printf("<video controls>\n");
-                printf("<source src=\"%s\" type=\"%s\">\n", $child->getAttribute('source'), $mimetypes[$extension]);
+                printf("<source src=\"%s\" type=\"%s\">\n", $child->getAttribute('source'), $mimetype);
                 printf("Your browser does not support the video tag.\n");
                 printf("</video>\n");
                 printf("</div>\n");
