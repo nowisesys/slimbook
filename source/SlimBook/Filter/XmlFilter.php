@@ -59,7 +59,7 @@ class XmlFilter
         public function getChapters($chapter = null)
         {
                 if ($chapter == null) {
-                        if (isset($this->simple->chapter->paragraph)) {
+                        if ($this->simple->chapter->count == 1) {
                                 $result = array($this->simple->chapter);
                                 return $result;
                         } else {
