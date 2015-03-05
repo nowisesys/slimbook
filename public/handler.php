@@ -28,7 +28,16 @@ use SlimBook\Render\Html as HtmlFormatter;
  * Date:   2015-03-02
  */
 
-require_once(realpath(__DIR__ . '/../vendor/autoload.php'));
+// 
+// Try to load autoloader in deploy mode first:
+// 
+if (file_exists(__DIR__ . '/../../../../vendor')) {
+        require_once(realpath(__DIR__ . '/../../../../vendor/autoload.php'));   // Deployed
+} elseif (file_exists(__DIR__ . '/../vendor')) {
+        require_once(realpath(__DIR__ . '/../vendor/autoload.php'));            // Development
+} else {
+        die(__FILE__  . ":" . __LINE__ . ": No autoload.php was found");
+}
 
 // 
 // Make sure that script is invoked properly:
