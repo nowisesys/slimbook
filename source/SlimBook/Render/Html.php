@@ -60,8 +60,10 @@ class Html extends FormatterBase
         {
                 $this->writeDocHeader();
                 printf("<body>\n");
+                printf("<div class=\"slimbook-head\">\n");
+                $this->writePageHeader();
+                printf("</div>\n");
                 printf("<div class=\"slimbook-main\">\n");
-                $this->writePageTOC();
                 $this->writePageBody();
                 printf("</div>\n");
                 $this->writePageFooter();
@@ -99,6 +101,21 @@ class Html extends FormatterBase
                 }
         }
 
+        private function writePageHeader()
+        {
+                $this->writePageTOC();
+                $this->writePageTitle();
+        }
+
+        private function writePageTitle()
+        {
+                if (count($this->chapters) == 1) {
+                        printf("<h1>%s - %s</h1>\n", $this->info->title, $this->chapters[0]->attributes()['title']);
+                } else {
+                        printf("<h1>%s</h1>\n", $this->info->title);
+                }
+        }
+
         /**
          * Write table of content (select).
          */
@@ -109,9 +126,13 @@ class Html extends FormatterBase
                 printf("<select onchange=\"location = this.options[this.selectedIndex].value;\">\n");
                 printf("<option value=\"#\" selected=\"selected\">-- Navigation --</option>\n");
                 foreach ($this->chapters as $chapter) {
-                        printf("<option value=\"#%s\" class=\"chapter\">%s</option>\n", $chapter->attributes()['name'], $chapter->attributes()['title']);
+                        if ($chapter->attributes()['name'] != "") {
+                                printf("<option value=\"#%s\" class=\"chapter\">%s</option>\n", $chapter->attributes()['name'], $chapter->attributes()['title']);
+                        }
                         foreach ($chapter->paragraph as $paragraph) {
-                                printf("<option value=\"#%s-%s\" class=\"paragraph\">&nbsp;&nbsp;%s</option>\n", $chapter->attributes()['name'], $paragraph->attributes()['name'], $paragraph->attributes()['title']);
+                                if ($paragraph->attributes()['name'] != "") {
+                                        printf("<option value=\"#%s-%s\" class=\"paragraph\">&nbsp;&nbsp;%s</option>\n", $chapter->attributes()['name'], $paragraph->attributes()['name'], $paragraph->attributes()['title']);
+                                }
                         }
                 }
                 printf("</select>\n");
@@ -125,11 +146,6 @@ class Html extends FormatterBase
         {
                 printf("\n");
                 printf("<div class=\"slimbook-content\">\n");
-                if (count($this->chapters) == 1) {
-                        printf("<h1>%s - %s</h1>\n", $this->info->title, $this->chapters[0]->attributes()['title']);
-                } else {
-                        printf("<h1>%s</h1>\n", $this->info->title);
-                }
                 printf("<div class=\"chapters\">\n");
                 foreach ($this->chapters as $chapter) {
                         $this->writeChapter($chapter);
@@ -209,7 +225,7 @@ class Html extends FormatterBase
                         '3gp'  => 'video/3gp',
                         'flv'  => 'video/x-flv'
                 );
-                
+
                 if (($pos = strrpos($child->getAttribute('source'), "."))) {
                         $extension = substr($child->getAttribute('source'), $pos + 1);
                         $mimetype = $mimetypes[$extension];
