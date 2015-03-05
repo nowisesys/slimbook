@@ -30,6 +30,10 @@ interface Formatter
          */
         const RENDER_HTML = "html";
         /**
+         * LaTeX rendition.
+         */
+        const RENDER_LATEX = "latex";
+        /**
          * Write document title.
          */
         const WRITE_TITLE = 1;

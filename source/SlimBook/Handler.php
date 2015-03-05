@@ -22,6 +22,7 @@ use SimpleXMLElement;
 use SlimBook\Filter\XmlFilter;
 use SlimBook\Render\Formatter;
 use SlimBook\Render\Html as HtmlFormatter;
+use SlimBook\Render\Latex as LatexFormatter;
 
 /**
  * The handler for SlimBook XML documents.
@@ -156,11 +157,13 @@ class Handler
                 } elseif (is_string($formatter)) {
                         if ($formatter == Formatter::RENDER_HTML) {
                                 $formatter = new HtmlFormatter();
+                        } elseif ($formatter == Formatter::RENDER_LATEX) {
+                                $formatter = new LatexFormatter();
                         } else {
                                 throw new \Exception("Unknown formatter '$formatter'");
                         }
                 }
-                
+
                 $filter = new XmlFilter($this->simple);
 
                 $formatter->setInfo($filter->getInfo());
