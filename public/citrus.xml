@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Text borrowed from http://en.wikipedia.org/wiki/Citrus
+-->
+
+<ns1:book
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xmlns:ns1='http://it.bmc.uu.se/compdept/slimbook'
+    xsi:schemaLocation='http://it.bmc.uu.se/compdept/slimbook slimbook.xsd'>
+    
+    <ns1:info>
+        <ns1:title>Citrus</ns1:title>
+        <ns1:date>2015-03-05</ns1:date>
+        <ns1:version>1.0</ns1:version>
+        <ns1:author>
+            <ns1:name>Anders Lövgren</ns1:name>
+            <ns1:email>anders.lovgren@bmc.uu.se</ns1:email>
+        </ns1:author>
+    </ns1:info>
+    
+    <ns1:chapter title="" name="">
+        <ns1:paragraph title="" name="">
+            Citrus is a common term and genus (Citrus) of flowering plants in the rue family, Rutaceae. The most recent research indicates an origin in Australia, New Caledonia and New Guinea.[1] Some researchers believe that the origin is in the part of Southeast Asia bordered by Northeast India, Burma (Myanmar) and the Yunnan province of China,[2][3][4] and it is in this region that some commercial species such as oranges, mandarins, and lemons originated. Citrus fruit has been cultivated in an ever-widening area since ancient times; the best-known examples are the oranges, lemons, grapefruit, and limes.
+        </ns1:paragraph>
+    </ns1:chapter>
+    
+    <ns1:chapter title="Name" name="name">
+        <ns1:paragraph title="" name="">
+            The generic name originated in Latin, where it referred to either the plant now known as Citron (C. medica) or a conifer tree (Thuja). It is somehow related to the ancient Greek word for cedar, κέδρος (kédros). This may be due to perceived similarities in the smell of citrus leaves and fruit with that of cedar.[5] Collectively, Citrus fruits and plants are also known by the Romance loanword agrumes (literally "sour fruits").
+        </ns1:paragraph>
+    </ns1:chapter>
+    
+    <ns1:chapter title="Taxonomy" name="taxonomy">
+        <ns1:paragraph>
+            The taxonomy and systematics of the genus are complex and the precise number of natural species is unclear, as many of the named species are hybrids clonally propagated through seeds (by apomixis), and there is genetic evidence that even some wild, true-breeding species are of hybrid origin.[6]
+        </ns1:paragraph>
+        <ns1:paragraph>
+            Cultivated Citrus may be derived from as few as four ancestral species.[7] Recent studies show that only four domesticated citrus fruit — the citron, pummelo, mandarine, and papeda — are actually original, and all the rest of citrus types developed through natural or artificial hybridization.[8] Natural and cultivated origin hybrids include commercially important fruit such as the oranges, grapefruit, lemons, limes, and some tangerines.
+        </ns1:paragraph>
+    </ns1:chapter>
+    
+    <ns1:chapter title="Description" name="desc">
+        <ns1:paragraph title="Tree" name="tree">
+            These plants are large shrubs or small to moderate-sized trees, reaching 5–15 m (16–49 ft) tall, with spiny shoots and alternately arranged evergreen leaves with an entire margin.[citation needed] The flowers are solitary or in small corymbs, each flower 2–4 cm (0.79–1.57 in) diameter, with five (rarely four) white petals and numerous stamens; they are often very strongly scented.
+            <ns1:image source="http://upload.wikimedia.org/wikipedia/commons/e/e0/Citrus_fruits.jpg" title="Slices of various citrus fruits"></ns1:image>
+        </ns1:paragraph>
+        <ns1:paragraph title="Fruit" name="fruit">
+            The fruit is a hesperidium, a specialised berry, globose to elongated, 4–30 cm (1.6–11.8 in) long and 4–20 cm (1.6–7.9 in) diameter, with a leathery rind or "peel" called a pericarp. The outermost layer of the pericarp is an "exocarp" called the flavedo, commonly referred to as the zest. The middle layer of the pericarp is the mesocarp, which in citrus fruits consists of the white, spongy "albedo", or "pith". The innermost layer of the pericarp is the endocarp. The segments are also called "liths", and the space inside each lith is a locule filled with juice vesicles, or "pulp". From the endocarp, string-like "hairs" extend into the locules, which provide nourishment to the fruit as it develops.[9][10]
+        </ns1:paragraph>
+    </ns1:chapter>
+    
+    <ns1:chapter title="Cultivation" name="cult">
+        <ns1:paragraph>
+            Citrus trees hybridise very readily – depending on the pollen source, plants grown from a Persian lime's seeds can produce fruit similar to grapefruit. Thus all commercial citrus cultivation uses trees produced by grafting the desired fruiting cultivars onto rootstocks selected for disease resistance and hardiness.
+            <ns1:image source="http://upload.wikimedia.org/wikipedia/commons/f/f2/Limes.jpg" title="Persian Limes in a grocery store."></ns1:image>
+        </ns1:paragraph>
+        <ns1:paragraph>
+            The colour of citrus fruits only develops in climates with a (diurnal) cool winter.[citation needed] In tropical regions with no winter at all, citrus fruits remain green until maturity, hence the tropical "green oranges".[citation needed] The Persian lime in particular is extremely sensitive to cool conditions, thus it is not usually exposed to cool enough conditions to develop a mature colour.[citation needed] If they are left in a cool place over winter, the fruits will change colour to yellow.
+        </ns1:paragraph>
+        <ns1:paragraph>
+            The terms "ripe" and "mature" are usually used synonymously, but they mean different things. A mature fruit is one that has completed its growth phase. Ripening is the changes that occur within the fruit after it is mature to the beginning of decay. These changes usually involve starches converting to sugars, a decrease in acids and a softening and change in the fruit's colour.[12]
+        </ns1:paragraph>
+        <ns1:paragraph>
+            Citrus fruits are non-climacteric and respiration slowly declines and the production and release of ethylene is gradual.[13] The fruits do not go through a ripening process in the sense that they become "tree ripe." Some fruits, for example cherries, physically mature and then continue to ripen on the tree. Other fruits, like pears, are picked when mature but before they ripen, then continue to ripen off the tree. Citrus fruits pass from immaturity to maturity to over-maturity while still on the tree. Once they are separated from the tree, they will not increase in sweetness or continue to ripen. The only way change may happen after being picked is that they will eventually start to decay.
+        </ns1:paragraph>
+        <ns1:paragraph>
+            With oranges, colour cannot be used as an indicator of ripeness because sometimes the rinds turn orange long before the oranges are ready to eat. Tasting them is the only way to know whether or not they are ready to eat.
+        </ns1:paragraph>
+        <ns1:paragraph>
+            Citrus trees are not generally frost hardy. Mandarin oranges (C. reticulata) tend to be the hardiest of the common Citrus species and can withstand short periods down to as cold as −10 °C (14 °F), but realistically temperatures not falling below −2 °C (28 °F) are required for successful cultivation. Tangerines, tangors and yuzu can be grown outside even in regions with more marked sub-freezing temperatures in winter, although this may affect fruit quality. A few hardy hybrids can withstand temperatures well below freezing, but do not produce quality fruit. Lemons can be commercially grown in cooler-summer/moderate-winter coastal Southern California, because sweetness is neither attained nor expected in retail lemon fruit. The related trifoliate orange (Citrus trifoliata) can survive below −20 °C (−4 °F); its fruit are astringent and inedible unless cooked but a few better-tasting cultivars and hybrids have been developed (see citranges).
+        </ns1:paragraph>
+        <ns1:paragraph>
+            The trees thrive in a consistently sunny, humid environment with fertile soil and adequate rainfall or irrigation. Abandoned trees in valleys may suffer, yet survive, the dry summer of Central California's Inner Coast Ranges. At any age citrus grows well enough with infrequent irrigation in partial shade, but the fruit crop is smaller. Though broadleaved, they are evergreen and do not drop leaves except when stressed. The stems of many varieties have large sharp thorns. The trees flower in the spring, and fruit is set shortly afterward. Fruit begins to ripen in fall or early winter months, depending on cultivar, and develops increasing sweetness afterward. Some cultivars of tangerines ripen by winter. Some, such as the grapefruit, may take up to eighteen months to ripen.
+        </ns1:paragraph>
+        <ns1:paragraph>
+            Major commercial citrus growing areas include southern China, the Mediterranean Basin (including southern Spain), South Africa, Australia, the southernmost United States, Mexico and parts of South America. In the United States, Florida, California, Arizona, and Texas are major producers, while smaller plantings are present in other Sun Belt states and in Hawaii.
+        </ns1:paragraph>
+        <ns1:paragraph title="As ornamental plants" name="plants">
+            Citrus trees grown in tubs and wintered under cover were a feature of Renaissance gardens, once glass-making technology enabled sufficient expanses of clear glass to be produced. An orangery was a feature of royal and aristocratic residences through the 17th and 18th centuries. The Orangerie at the Palace of the Louvre, 1617, inspired imitations that were not eclipsed until the development of the modern greenhouse in the 1840s. In the United States the earliest surviving orangery is at the Tayloe House, Mount Airy, Virginia. George Washington had an orangery at Mount Vernon.
+            <ns1:image source="http://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Orangerie_Kruidtuin_Leuven.jpg/1024px-Orangerie_Kruidtuin_Leuven.jpg" title="Orangery of the Botanical Garden in Leuven (Belgium)"></ns1:image>
+        </ns1:paragraph>
+        <ns1:paragraph>
+            Some modern hobbyists still grow dwarf citrus in containers or greenhouses in areas where it is too cold to grow it outdoors. Consistent climate, sufficient sunlight, and proper watering are crucial if the trees are to thrive and produce fruit. Compared to many of the usual "green shrubs", citrus trees better tolerate poor container care. For cooler winter areas, limes and lemons should not be grown, since they are more sensitive to winter cold than other citrus fruits. Hybrids with kumquats (× Citrofortunella) have good cold resistance.
+        </ns1:paragraph>
+        <ns1:paragraph title="Pests and diseases" name="disease">
+            Citrus plants are very liable to infestation by aphids, whitefly and scale insects (e.g. California red scale). Also rather important are the viral infections to which some of these ectoparasites serve as vectors such as the aphid-transmitted Citrus tristeza virus which when unchecked by proper methods of control is devastating to citrine plantations. The newest threat to citrus groves in the United States is the Asian citrus psyllid.
+        </ns1:paragraph>
+        <ns1:paragraph>
+            The Asian citrus psyllid is an aphid-like insect that feeds on the leaves and stems of citrus trees and other citrus-like plants – but the real danger lies in that it can carry a deadly, bacterial tree disease called Huanglongbing (HLB), also known as citrus greening disease.[14]
+        </ns1:paragraph>
+        <ns1:paragraph title="Deficiency diseases" name="deficiency">
+            Citrus plants can also develop a deficiency condition called chlorosis, characterized by yellowing leaves highlighted by contrasting leaf veins. The shriveling leaves eventually fall, and if plant loses too many, it will slowly die. This condition is often caused by an excessively high pH (alkaline soil), which prevents the plant from absorbing iron, magnesium, zinc, or other nutrients it needs to produce chlorophyll. This condition can be cured by adding an appropriate acidic fertilizer formulated for citrus, which can sometimes revive a plant to produce new leaves and even flower buds within a few weeks under optimum conditions. A soil which is too acidic can also cause problems; citrus prefers neutral soil (pH between 6 and 8). Citrus plants are also sensitive to excessive salt in the soil. Soil testing may be necessary to properly diagnose nutrient deficiency diseases.[16]
+        </ns1:paragraph>
+        <ns1:paragraph title="Production" name="production">
+            <ns1:link target="http://en.wikipedia.org/wiki/Citrus_production" title="Goto wikipedia">See also: Citrus production</ns1:link>
+        </ns1:paragraph>
+    </ns1:chapter>
+
+    <ns1:chapter title="Uses" name="uses">
+        <ns1:paragraph title="Culinary" name="culinary">
+            Many citrus fruits, such as oranges, tangerines, grapefruits, and clementines, are generally eaten fresh. They are typically peeled and can be easily split into segments. Grapefruit is more commonly halved and eaten out of the skin with a spoon.[17] There are special spoons (grapefruit spoons) with serrated tips designed for this purpose. Orange and grapefruit juices are also very popular breakfast beverages. More acidic citrus, such as lemons and limes, are generally not eaten on their own. Meyer Lemons can be eaten 'out of hand' with the fragant skin; they are both sweet and sour. Lemonade or limeade are popular beverages prepared by diluting the juices of these fruits and adding sugar. Lemons and limes are also used as garnishes or in cooked dishes. Their juice is used as an ingredient in a variety of dishes; it can commonly be found in salad dressings and squeezed over cooked meat or vegetables.
+            <ns1:image source="http://upload.wikimedia.org/wikipedia/commons/9/9d/NIH_citrus.jpg" title="Wedges of pink grapefruit, lime, and lemon, and a half orange (clockwise from top)"></ns1:image>
+        </ns1:paragraph>
+        <ns1:paragraph title="Medical" name="medical">
+            Oranges were historically used for their high content of vitamin C, which prevents scurvy. Scurvy is caused by vitamin C deficiency, and can be prevented by having 10 milligrams of vitamin C a day. An early sign of scurvy is fatigue. If ignored, later symptoms are bleeding and bruising easily. British sailors were given a ration of citrus fruits on long voyages to prevent the onset of scurvy, hence the British nickname of Limey.
+            <ns1:image source="http://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Citrus_aurantiifolia_in_Kadavoor.jpg/1024px-Citrus_aurantiifolia_in_Kadavoor.jpg" title="Citrus aurantifolia in Kerala"></ns1:image>
+        </ns1:paragraph>
+    </ns1:chapter>
+</ns1:book>
