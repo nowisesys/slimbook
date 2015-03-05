@@ -1,6 +1,9 @@
 <?php
 
+namespace SlimBook\CLI;
+
 use SlimBook\Handler;
+use SlimBook\Render\Formatter;
 
 /*
  * Copyright (C) 2015 Anders Lövgren (QNET/BMC CompDept).
@@ -26,9 +29,21 @@ require_once(realpath(__DIR__ . '/../vendor/autoload.php'));
 class Option
 {
 
+        /**
+         * The option key.
+         * @var string 
+         */
         public $key;
+        /**
+         * The option value.
+         * @var string 
+         */
         public $val;
 
+        /**
+         * Constructor.
+         * @param string $arg The option string (e.g. --xmldoc=file).
+         */
         public function __construct($arg)
         {
                 if (strpos($arg, '=')) {
@@ -140,7 +155,7 @@ class Application
         {
                 try {
                         $formatter = $this->handler->prepare($this->format);
-                        $formatter->write(SlimBook\Render\Formatter::WRITE_ALL, $this->output);
+                        $formatter->write(Formatter::WRITE_ALL, $this->output);
                 } catch (\Exception $exception) {
                         fprintf(STDERR, "%s: %s\n", $this->prog, $exception->getMessage());
                 }
