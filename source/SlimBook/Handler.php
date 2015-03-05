@@ -156,6 +156,8 @@ class Handler
                 } elseif (is_string($formatter)) {
                         if ($formatter == Formatter::RENDER_HTML) {
                                 $formatter = new HtmlFormatter();
+                        } else {
+                                throw new \Exception("Unknown formatter '$formatter'");
                         }
                 }
                 
