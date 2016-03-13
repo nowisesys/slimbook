@@ -10,5 +10,5 @@
 AliasMatch ^(/slimbook/.*.xml) /var/www/localhost/apps/slimbook/public/handler.php
 
 <Directory /var/www/localhost/apps/slimbook>
-    Allow from all
+    Require all granted
 </Directory>
