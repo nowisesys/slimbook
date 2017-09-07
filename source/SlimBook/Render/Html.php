@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (C) 2015 Anders Lövgren (QNET/BMC CompDept).
+ * Copyright (C) 2015-2017 Anders Lövgren (QNET/BMC CompDept).
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -94,10 +94,10 @@ class Html extends FormatterBase
          */
         private function writeDocTitle()
         {
-                if (count($this->chapters) == 1) {
-                        printf("<title>%s - %s</title>\n", $this->info->title, $this->chapters[0]->attributes()['title']);
+                if (count($this->_chapters) == 1) {
+                        printf("<title>%s - %s</title>\n", $this->_info->title, $this->_chapters[0]->attributes()['title']);
                 } else {
-                        printf("<title>%s</title>\n", $this->info->title);
+                        printf("<title>%s</title>\n", $this->_info->title);
                 }
         }
 
@@ -109,10 +109,10 @@ class Html extends FormatterBase
 
         private function writePageTitle()
         {
-                if (count($this->chapters) == 1) {
-                        printf("<h1>%s - %s</h1>\n", $this->info->title, $this->chapters[0]->attributes()['title']);
+                if (count($this->_chapters) == 1) {
+                        printf("<h1>%s - %s</h1>\n", $this->_info->title, $this->_chapters[0]->attributes()['title']);
                 } else {
-                        printf("<h1>%s</h1>\n", $this->info->title);
+                        printf("<h1>%s</h1>\n", $this->_info->title);
                 }
         }
 
@@ -125,7 +125,7 @@ class Html extends FormatterBase
                 printf("<div class=\"slimbook-toc\">\n");
                 printf("<select onchange=\"location = this.options[this.selectedIndex].value;\">\n");
                 printf("<option value=\"#\" selected=\"selected\">-- Navigation --</option>\n");
-                foreach ($this->chapters as $chapter) {
+                foreach ($this->_chapters as $chapter) {
                         if ($chapter->attributes()['name'] != "") {
                                 printf("<option value=\"#%s\" class=\"chapter\">%s</option>\n", $chapter->attributes()['name'], $chapter->attributes()['title']);
                         }
@@ -147,7 +147,7 @@ class Html extends FormatterBase
                 printf("\n");
                 printf("<div class=\"slimbook-content\">\n");
                 printf("<div class=\"chapters\">\n");
-                foreach ($this->chapters as $chapter) {
+                foreach ($this->_chapters as $chapter) {
                         $this->writeChapter($chapter);
                 }
                 printf("</div>\n");
@@ -161,9 +161,9 @@ class Html extends FormatterBase
         {
                 printf("\n");
                 printf("<div class=\"slimbook-footer\">\n");
-                printf("<div class=\"date\">Date: %s</div>\n", $this->info->date);
-                printf("<div class=\"author\"><a href=\"mailto:%s\">%s</a></div>\n", $this->info->author->email, $this->info->author->name);
-                printf("<div class=\"version\">Version: %s</div>\n", $this->info->version);
+                printf("<div class=\"date\">Date: %s</div>\n", $this->_info->date);
+                printf("<div class=\"author\"><a href=\"mailto:%s\">%s</a></div>\n", $this->_info->author->email, $this->_info->author->name);
+                printf("<div class=\"version\">Version: %s</div>\n", $this->_info->version);
                 printf("</div>\n");
         }
 

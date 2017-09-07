@@ -1,12 +1,7 @@
 <?php
 
-namespace SlimBook\CLI;
-
-use SlimBook\Handler;
-use SlimBook\Render\Formatter;
-
 /*
- * Copyright (C) 2015 Anders Lövgren (QNET/BMC CompDept).
+ * Copyright (C) 2015-2017 Anders Lövgren (QNET/BMC CompDept).
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +16,11 @@ use SlimBook\Render\Formatter;
  * limitations under the License.
  */
 
+namespace SlimBook\CLI;
+
+use SlimBook\Handler;
+use SlimBook\Render\Formatter;
+
 // 
 // Try to load autoloader in deploy mode first:
 // 
@@ -29,7 +29,7 @@ if (file_exists(__DIR__ . '/../../../../vendor')) {
 } elseif (file_exists(__DIR__ . '/../vendor')) {
         require_once(realpath(__DIR__ . '/../vendor/autoload.php'));            // Development
 } else {
-        die(__FILE__  . ":" . __LINE__ . ": No autoload.php was found");
+        die(__FILE__ . ":" . __LINE__ . ": No autoload.php was found");
 }
 
 /**
@@ -76,31 +76,31 @@ class Application
          * Program name.
          * @var string 
          */
-        private $prog;
+        private $_prog;
         /**
          *
          * @var Handler 
          */
-        private $handler;
+        private $_handler;
         /**
          * The output format.
          * @var string 
          */
-        private $format;
+        private $_format;
         /**
          * The output file.
          * @var string 
          */
-        private $output;
+        private $_output;
 
         /**
          * Print usage information.
          */
         public function usage()
         {
-                printf("%s - SlimBook XML document rendering application\n", $this->prog);
+                printf("%s - SlimBook XML document rendering application\n", $this->_prog);
                 printf("\n");
-                printf("Usage: %s --xmldoc=file [--chapter=name] [--format=str]\n", $this->prog);
+                printf("Usage: %s --xmldoc=file [--chapter=name] [--format=str]\n", $this->_prog);
                 printf("Options:\n");
                 printf("  -X file,--xmldoc=file:  The XML document to render.\n");
                 printf("  -C name,--chapter=name: Name of chapter to render.\n");
@@ -109,7 +109,7 @@ class Application
                 printf("  -h,--help:              This casual help.\n");
                 printf("\n");
                 printf("Example:\n");
-                printf("  %s --xmldoc=public/citrus.xml --chapter=taxonomy --format=html\n", $this->prog);
+                printf("  %s --xmldoc=public/citrus.xml --chapter=taxonomy --format=html\n", $this->_prog);
                 printf("\n");
                 printf("Copyright (C) 2015 Anders Lövgren, Computing Department at BMC, Uppsala University.\n");
         }
@@ -121,7 +121,7 @@ class Application
          */
         public function parse($argc, $argv)
         {
-                $this->prog = basename($_SERVER['SCRIPT_FILENAME']);
+                $this->_prog = basename($_SERVER['SCRIPT_FILENAME']);
 
                 for ($i = 0; $i < $argc; $i++) {
                         $option = new Option($argv[$i]);
@@ -139,19 +139,19 @@ class Application
                                         exit(0);
                                 case "-X":
                                 case "--xmldoc":
-                                        $this->handler = new Handler($option->val);
+                                        $this->_handler = new Handler($option->val);
                                         break;
                                 case "-C":
                                 case "--chapter":
-                                        $this->handler->setFilter($option->val);
+                                        $this->_handler->setFilter($option->val);
                                         break;
                                 case "-F":
                                 case "--format":
-                                        $this->format = $option->val;
+                                        $this->_format = $option->val;
                                         break;
                                 case "-O":
                                 case "--output":
-                                        $this->output = $option->val;
+                                        $this->_output = $option->val;
                                         break;
                         }
                 }
@@ -162,11 +162,14 @@ class Application
          */
         public function process()
         {
+                if (!isset($this->_handler)) {
+                        return;
+                }
                 try {
-                        $formatter = $this->handler->prepare($this->format);
-                        $formatter->write(Formatter::WRITE_ALL, $this->output);
+                        $formatter = $this->_handler->prepare($this->_format);
+                        $formatter->write(Formatter::WRITE_ALL, $this->_output);
                 } catch (\Exception $exception) {
-                        fprintf(STDERR, "%s: %s\n", $this->prog, $exception->getMessage());
+                        fprintf(STDERR, "%s: %s\n", $this->_prog, $exception->getMessage());
                 }
         }
 

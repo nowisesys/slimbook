@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (C) 2015 Anders Lövgren (QNET/BMC CompDept).
+ * Copyright (C) 2015-2017 Anders Lövgren (QNET/BMC CompDept).
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,22 +41,22 @@ class Handler
          * The XML document path.
          * @var string 
          */
-        private $xmldoc;
+        private $_xmldoc;
         /**
          * The SimpleXML object.
          * @var SimpleXMLElement 
          */
-        private $simple;
+        private $_simple;
         /**
          * The chapter to process.
          * @var string 
          */
-        private $chapter;
+        private $_chapter;
         /**
          * The output formatter.
          * @var Formatter 
          */
-        private $formatter;
+        private $_formatter;
 
         /**
          * Constructor.
@@ -64,8 +64,8 @@ class Handler
          */
         public function __construct($xmldoc)
         {
-                $this->xmldoc = $xmldoc;
-                $this->simple = simplexml_load_file($this->xmldoc, null, 0, self::NS);
+                $this->_xmldoc = $xmldoc;
+                $this->_simple = simplexml_load_file($this->_xmldoc, null, 0, self::NS);
         }
 
         /**
@@ -74,7 +74,7 @@ class Handler
          */
         public function setFilter($chapter)
         {
-                $this->chapter = $chapter;
+                $this->_chapter = $chapter;
         }
 
         /**
@@ -83,7 +83,7 @@ class Handler
          */
         public function getFilter()
         {
-                return $this->chapter;
+                return $this->_chapter;
         }
 
         /**
@@ -92,7 +92,7 @@ class Handler
          */
         public function getDocument()
         {
-                return $this->simple;
+                return $this->_simple;
         }
 
         /**
@@ -101,7 +101,7 @@ class Handler
          */
         public function setFormatter($formatter)
         {
-                $this->formatter = $formatter;
+                $this->_formatter = $formatter;
         }
 
         /**
@@ -110,7 +110,7 @@ class Handler
          */
         public function getNamespace()
         {
-                foreach ($this->simple->getNamespaces() as $ns) {
+                foreach ($this->_simple->getNamespaces() as $ns) {
                         if ($ns == self::NS) {
                                 return $ns;
                         }
@@ -125,7 +125,7 @@ class Handler
          */
         public function getPrefix()
         {
-                foreach ($this->simple->getNamespaces() as $prefix => $ns) {
+                foreach ($this->_simple->getNamespaces() as $prefix => $ns) {
                         if ($ns == self::NS) {
                                 return $prefix;
                         }
@@ -153,7 +153,7 @@ class Handler
         public function prepare($formatter = null)
         {
                 if (!isset($formatter)) {
-                        $formatter = $this->formatter;
+                        $formatter = $this->_formatter;
                 } elseif (is_string($formatter)) {
                         if ($formatter == Formatter::RENDER_HTML) {
                                 $formatter = new HtmlFormatter();
@@ -164,7 +164,7 @@ class Handler
                         }
                 }
 
-                $filter = new XmlFilter($this->simple);
+                $filter = new XmlFilter($this->_simple);
 
                 $formatter->setInfo($filter->getInfo());
                 $formatter->setChapters($filter->getChapters($this->getFilter()));

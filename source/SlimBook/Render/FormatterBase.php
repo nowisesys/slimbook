@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (C) 2015 Anders Lövgren (QNET/BMC CompDept).
+ * Copyright (C) 2015-2017 Anders Lövgren (QNET/BMC CompDept).
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,36 +32,36 @@ abstract class FormatterBase implements Formatter
          * The page info.
          * @var SimpleXMLElement 
          */
-        protected $info;
+        protected $_info;
         /**
          * The page chapters.
          * @var SimpleXMLElement 
          */
-        protected $chapters = array();
+        protected $_chapters = array();
         /**
          * The output stream.
          * @var resource 
          */
-        private $stream;
+        private $_stream;
 
         public function setInfo($simple)
         {
-                $this->info = $simple;
+                $this->_info = $simple;
         }
 
         public function addChapter($simple)
         {
-                $this->chapters[] = $simple;
+                $this->_chapters[] = $simple;
         }
 
         public function setChapters($simple)
         {
-                $this->chapters = $simple;
+                $this->_chapters = $simple;
         }
 
         public function setChapter($simple)
         {
-                $this->chapters = array($simple);
+                $this->_chapters = array($simple);
         }
 
         abstract public function write($mode = Formatter::WRITE_ALL, $file = null);
@@ -75,11 +75,11 @@ abstract class FormatterBase implements Formatter
         {
                 if (isset($file)) {
                         if (is_resource($file)) {
-                                $this->stream = $file;
+                                $this->_stream = $file;
                         } else {
-                                $this->stream = fopen($file, "w");
+                                $this->_stream = fopen($file, "w");
                         }
-                        if (!is_resource($this->stream)) {
+                        if (!is_resource($this->_stream)) {
                                 throw new Exception("Invalid output stream");
                         } else {
                                 ob_start();
@@ -92,8 +92,8 @@ abstract class FormatterBase implements Formatter
          */
         protected function close()
         {
-                if (isset($this->stream)) {
-                        fwrite($this->stream, ob_get_clean());
+                if (isset($this->_stream)) {
+                        fwrite($this->_stream, ob_get_clean());
                 }
         }
 

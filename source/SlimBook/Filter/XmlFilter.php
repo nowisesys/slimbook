@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (C) 2015 Anders Lövgren (QNET/BMC CompDept).
+ * Copyright (C) 2015-2017 Anders Lövgren (QNET/BMC CompDept).
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ class XmlFilter
         /**
          * @var \SimpleXMLElement 
          */
-        private $simple;
+        private $_simple;
 
         /**
          * Constructor.
@@ -39,7 +39,7 @@ class XmlFilter
          */
         public function __construct(\SimpleXMLElement $simple)
         {
-                $this->simple = $simple;
+                $this->_simple = $simple;
         }
 
         /**
@@ -48,7 +48,7 @@ class XmlFilter
          */
         public function getInfo()
         {
-                return $this->simple->info;
+                return $this->_simple->info;
         }
 
         /**
@@ -59,15 +59,15 @@ class XmlFilter
         public function getChapters($chapter = null)
         {
                 if ($chapter == null) {
-                        if ($this->simple->chapter->count == 1) {
-                                $result = array($this->simple->chapter);
+                        if ($this->_simple->chapter->count == 1) {
+                                $result = array($this->_simple->chapter);
                                 return $result;
                         } else {
-                                $result = $this->simple->chapter;
+                                $result = $this->_simple->chapter;
                                 return $result;
                         }
                 } else {
-                        foreach ($this->simple->chapter as $c) {
+                        foreach ($this->_simple->chapter as $c) {
                                 foreach ($c->attributes() as $a) {
                                         if ($a == $chapter) {
                                                 return array($c);

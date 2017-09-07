@@ -1,10 +1,7 @@
 <?php
 
-use SlimBook\Handler;
-use SlimBook\Render\Html as HtmlFormatter;
-
 /*
- * Copyright (C) 2015 Anders Lövgren (QNET/BMC CompDept).
+ * Copyright (C) 2015-2017 Anders Lövgren (QNET/BMC CompDept).
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +15,9 @@ use SlimBook\Render\Html as HtmlFormatter;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+use SlimBook\Handler;
+use SlimBook\Render\Html as HtmlFormatter;
 
 /*
  * Render SlimBook XML document.
@@ -36,7 +36,7 @@ if (file_exists(__DIR__ . '/../../../../vendor')) {
 } elseif (file_exists(__DIR__ . '/../vendor')) {
         require_once(realpath(__DIR__ . '/../vendor/autoload.php'));            // Development
 } else {
-        die(__FILE__  . ":" . __LINE__ . ": No autoload.php was found");
+        die(__FILE__ . ":" . __LINE__ . ": No autoload.php was found");
 }
 
 // 
