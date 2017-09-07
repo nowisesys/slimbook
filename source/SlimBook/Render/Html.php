@@ -29,6 +29,12 @@ use SimpleXMLElement;
 class Html extends FormatterBase
 {
 
+        /**
+         * Write document content.
+         * 
+         * @param int $mode The write mode. One or more of the WRITE_XXX constants.
+         * @param resource|string $file The output stream or destination file.
+         */
         public function write($mode = Formatter::WRITE_ALL, $file = null)
         {
                 $this->open($file);
@@ -101,12 +107,18 @@ class Html extends FormatterBase
                 }
         }
 
+        /**
+         * Write page header (TOC and title).
+         */
         private function writePageHeader()
         {
                 $this->writePageTOC();
                 $this->writePageTitle();
         }
 
+        /**
+         * Write page title.
+         */
         private function writePageTitle()
         {
                 if (count($this->_chapters) == 1) {
@@ -167,6 +179,10 @@ class Html extends FormatterBase
                 printf("</div>\n");
         }
 
+        /**
+         * Write a chapter.
+         * @param SimpleXMLElement $chapter
+         */
         private function writeChapter($chapter)
         {
                 printf("<div class=\"chapter\">\n");

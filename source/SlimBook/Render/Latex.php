@@ -18,6 +18,8 @@
 
 namespace SlimBook\Render;
 
+use LogicException;
+
 /**
  * LaTeX output render class.
  *
@@ -26,6 +28,12 @@ namespace SlimBook\Render;
 class Latex extends FormatterBase
 {
 
+        /**
+         * Write document content.
+         * 
+         * @param int $mode The write mode. One or more of the WRITE_XXX constants.
+         * @param resource|string $file The output stream or destination file.
+         */
         public function write($mode = Formatter::WRITE_ALL, $file = null)
         {
                 $this->open($file);
@@ -50,6 +58,9 @@ class Latex extends FormatterBase
                 $this->close();
         }
 
+        /**
+         * Write complete LaTeX page.
+         */
         private function writeDocument()
         {
                 printf("%%\n");
@@ -64,24 +75,37 @@ class Latex extends FormatterBase
                 printf("\\end{document}\n");
         }
 
+        /**
+         * Write document title.
+         */
         private function writeDocTitle()
         {
-                
+                throw new LogicException("Not yet implemented");
         }
 
+        /**
+         * Write table of content (TOC index).
+         */
         private function writePageTOC()
         {
                 printf("\\tableofcontents\n");
+                throw new LogicException("Not yet implemented");
         }
 
+        /**
+         * Write main content.
+         */
         private function writePageBody()
         {
-                
+                throw new LogicException("Not yet implemented");
         }
 
+        /**
+         * Write page footer.
+         */
         private function writePageFooter()
         {
-                
+                throw new LogicException("Not yet implemented");
         }
 
 }

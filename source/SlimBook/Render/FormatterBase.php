@@ -44,26 +44,48 @@ abstract class FormatterBase implements Formatter
          */
         private $_stream;
 
+        /**
+         * Set page/book information.
+         * @param SimpleXMLElement $simple
+         */
         public function setInfo($simple)
         {
                 $this->_info = $simple;
         }
 
+        /**
+         * Add chapter to render.
+         * @param SimpleXMLElement $simple
+         */
         public function addChapter($simple)
         {
                 $this->_chapters[] = $simple;
         }
 
+        /**
+         * Set array of chapters to render.
+         * @param array $simple Array of simple XML objects.
+         */
         public function setChapters($simple)
         {
                 $this->_chapters = $simple;
         }
 
+        /**
+         * Set chapter to render.
+         * @param SimpleXMLElement $simple
+         */
         public function setChapter($simple)
         {
                 $this->_chapters = array($simple);
         }
 
+        /**
+         * Write document content.
+         * 
+         * @param int $mode The write mode. One or more of the WRITE_XXX constants.
+         * @param resource|string $file The output stream or destination file.
+         */
         abstract public function write($mode = Formatter::WRITE_ALL, $file = null);
 
         /**
