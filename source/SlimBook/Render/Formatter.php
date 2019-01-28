@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (C) 2015 Anders Lövgren (QNET/BMC CompDept).
+ * Copyright (C) 2015 Anders Lövgren (Nowise Systems/BMC-IT, Uppsala University).
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ namespace SlimBook\Render;
 
 /**
  * Interface for output formatter (render classes).
- * @author Anders Lövgren (QNET/BMC CompDept)
+ * @author Anders Lövgren (Nowise Systems/BMC-IT, Uppsala University)
  */
 interface Formatter
 {
