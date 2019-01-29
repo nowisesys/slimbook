@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Copyright (C) 2015-2017 Anders Lövgren (Nowise Systems/BMC-IT, Uppsala University).
+ * Copyright (C) 2015-2019 Anders Lövgren (Nowise Systems/BMC-IT, Uppsala University).
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,7 +35,7 @@ class Handler
         /**
          * The SlimBook namespace.
          */
-        const NS = 'http://it.bmc.uu.se/compdept/slimbook';
+        const NS = 'http://nowise.se/schemas/slimbook';
 
         /**
          * The XML document path.

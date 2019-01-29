@@ -3,8 +3,8 @@
 <!-- Example of book -->
 <ns1:book
     xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
-    xmlns:ns1='http://it.bmc.uu.se/compdept/slimbook'
-    xsi:schemaLocation='http://it.bmc.uu.se/compdept/slimbook slimbook.xsd'>
+    xmlns:ns1='http://nowise.se/schemas/slimbook'
+    xsi:schemaLocation='http://nowise.se/schemas/slimbook slimbook.xsd'>
     <!-- Book information -->
     <ns1:info>
         <ns1:title>Book title</ns1:title>
@@ -12,7 +12,7 @@
         <ns1:version>1.0</ns1:version>
         <ns1:author>
             <ns1:name>Anders Lövgren</ns1:name>
-            <ns1:email>anders.lovgren@bmc.uu.se</ns1:email>
+            <ns1:email>andlov@nowise.se</ns1:email>
         </ns1:author>
     </ns1:info>
     
@@ -28,9 +28,9 @@
     <ns1:chapter title="Chapter 3" name="chap3">
         <ns1:paragraph title="Section 1" name="para1">
             This is a video:
-            <ns1:video source="http://it.bmc.uu.se/andlov/php/proj/bmc/slimbook/videos/small.webm" title="Video 1"></ns1:video>
+            <ns1:video source="https://nowise.se/oss/slimbook/videos/small.webm" title="Video 1"></ns1:video>
             This is an image:
-            <ns1:image source="http://it.bmc.uu.se/andlov/php/proj/bmc/slimbook/images/netbeans-auto-complete.png" title="Image 1"></ns1:image>
+            <ns1:image source="https://nowise.se/oss/slimbook/images/netbeans-auto-complete.png" title="Image 1"></ns1:image>
             This is a link:
             <ns1:link target="#chap2-para1" title="Navigate to 2.1 (HTML anchor link)">2.1</ns1:link>
             This is a link:

@@ -6,8 +6,8 @@
 
 <ns1:book
     xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
-    xmlns:ns1='http://it.bmc.uu.se/compdept/slimbook'
-    xsi:schemaLocation='http://it.bmc.uu.se/compdept/slimbook slimbook.xsd'>
+    xmlns:ns1='http://nowise.se/schemas/slimbook'
+    xsi:schemaLocation='http://nowise.se/schemas/slimbook slimbook.xsd'>
     
     <ns1:info>
         <ns1:title>Citrus</ns1:title>
@@ -15,7 +15,7 @@
         <ns1:version>1.0</ns1:version>
         <ns1:author>
             <ns1:name>Anders Lövgren</ns1:name>
-            <ns1:email>anders.lovgren@bmc.uu.se</ns1:email>
+            <ns1:email>andlov@nowise.se</ns1:email>
         </ns1:author>
     </ns1:info>
     

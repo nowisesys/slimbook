@@ -3,8 +3,8 @@
 <!-- Example of page -->
 <ns1:page
     xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
-    xmlns:ns1='http://it.bmc.uu.se/compdept/slimbook'
-    xsi:schemaLocation='http://it.bmc.uu.se/compdept/slimbook slimbook.xsd'>
+    xmlns:ns1='http://nowise.se/schemas/slimbook'
+    xsi:schemaLocation='http://nowise.se/schemas/slimbook slimbook.xsd'>
     <!-- Page information -->
     <ns1:info>
         <ns1:title></ns1:title>

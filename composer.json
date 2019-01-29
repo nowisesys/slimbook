@@ -1,15 +1,19 @@
 {
-    "name": "bmc/slimbook",
-    "version": "0.9.3",
+    "name": "nowise/slimbook",
+    "version": "0.9.4",
     "description": "Simple XML schema for web page markup and type setting of books.",
     "type": "library",
     "keywords": ["slimbook", "schema", "xml", "dtd", "uup", "bmc"],
-    "homepage": "http://it.bmc.uu.se/andlov/php/proj/bmc/slimbook",
+    "homepage": "https://nowise.se/oss/slimbook",
     "license": "Apache-2.0",
     "authors": [
         {
             "name": "Anders Lövgren",
             "email": "anders.lovgren@bmc.uu.se"
+        },
+        {
+            "name": "Anders Lövgren",
+            "email": "andlov@nowise.se"
         }
     ],
     "require": {

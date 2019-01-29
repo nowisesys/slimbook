@@ -8,8 +8,8 @@
 -->
 
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://it.bmc.uu.se/compdept/slimbook"
-           xmlns="http://it.bmc.uu.se/compdept/slimbook"
+           targetNamespace="http://nowise.se/schemas/slimbook"
+           xmlns="http://nowise.se/schemas/slimbook"
            elementFormDefault="qualified">
 
     <xs:annotation>
